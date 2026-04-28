@@ -1,4 +1,32 @@
- 
+<head>
+  <style>
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .nav-links {
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      .nav-cta {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+        display: block;
+      }
+    }
+  </style>
+</head> 
  <style>
 
 /* ✅ CONTAINER (fixed height with scroll) */
@@ -16,6 +44,8 @@
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 16px;
+  flex: 0 0 auto;
+min-width: 280px;
 }
 
 /* grid */
@@ -23,6 +53,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 12px;
+  display: flex;
+overflow-x: auto;
 }
 
 /* card */
@@ -757,7 +789,7 @@ grid-template-columns: 1.6fr 0.8fr;
 
     <a href="#hero" class="nav-brand" style="color:#fff; text-decoration:none;">
       <img src="https://topmate-staging.s3.amazonaws.com/9NQoYHEJu9apWSS5kdpZmK.png" alt="Mazher Khan">
-      <span class="nav-brand-name" style="font-size:25px; color:#fff;">Khan Analytics</span>
+      <span class="nav-brand-name" style="font-size:20px; color:#fff;">Khan Analytics</span>
     </a>
 
     <ul class="nav-links" style="list-style:none; display:flex; gap:20px; margin:0; padding:0;">
