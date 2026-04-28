@@ -1,3 +1,88 @@
+ 
+ <style>
+
+/* ✅ CONTAINER (fixed height with scroll) */
+#text-testimonials {
+  max-height: 500px;        /* 🔥 FIXED HEIGHT */
+  overflow-y: auto;         /* scroll whole section */
+}
+
+/* optional width control */
+#text-testimonials .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* grid */
+#text-testimonials .testi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+/* card */
+#text-testimonials .testi-card {
+    background-color: #FFFFFA !important;
+  border: 1px solid #f5eecb !important;
+  border-radius: 12px;
+  padding: 12px 14px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+  border: 1px solid #f0e1a0 !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* hover */
+#text-testimonials .testi-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.07);
+}
+
+/* ✅ MAIN TEXT (auto adjust + limit lines) */
+#text-testimonials .testi-card div:first-child {
+  color: #111 !important;
+  font-size: clamp(11px, 1.2vw, 14px);
+  line-height: 1.5;
+
+  /* 🔥 LIMIT HEIGHT */
+  display: -webkit-box;
+  -webkit-line-clamp: 4;   /* show max 4 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* author */
+#text-testimonials .testi-author {
+  margin-top: 8px;
+  font-size: clamp(10px, 1vw, 12px);
+  font-weight: 600;
+  color: #000 !important;
+}
+
+/* prevent hover color change */
+#text-testimonials .testi-card:hover div:first-child,
+#text-testimonials .testi-card:hover .testi-author {
+  color: #111 !important;
+}
+
+/* ✅ CORRECT breakpoints */
+@media (max-width: 768px) {
+  #text-testimonials .testi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  #text-testimonials .testi-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,51 +137,80 @@ body::after {
 }
 
 /* ── NAV ── */
+/* ── BODY FIX (IMPORTANT) ── */
+body {
+  padding-top: 68px; /* ✅ pushes content below fixed navbar */
+}
+
+/* ── NAV ── */
 nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  z-index: 100;
   background: rgba(10,10,15,0.85);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border2);
 }
+
 .nav-inner {
-  max-width: 1100px; margin: 0 auto;
-  padding: 0 28px;
+  max-width: 800px; 
+  margin: 0 auto;
+  padding: 0 12px;
   height: 68px;
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between;
   gap: 20px;
 }
+
 .nav-brand {
-  display: flex; align-items: center; gap: 12px;
+  display: flex; 
+  align-items: center; 
+  gap: 12px;
   text-decoration: none;
 }
+
 .nav-brand img {
-  width: 38px; height: 38px;
+  width: 38px; 
+  height: 38px;
   border-radius: 50%;
   border: 1.5px solid var(--border2);
   object-fit: cover;
 }
+
 .nav-brand-name {
   font-family: var(--font-display);
   font-size: 18px;
   color: var(--text);
   letter-spacing: -0.01em;
 }
+
 .nav-links {
-  display: flex; gap: 32px;
+  display: flex; 
+  gap: 32px;
   list-style: none;
 }
+
 .nav-links a {
-  font-size: 14px; font-weight: 500;
+  font-size: 14px; 
+  font-weight: 500;
   color: rgba(240,238,248,0.7);
   text-decoration: none;
   letter-spacing: 0.02em;
   transition: color 0.2s;
 }
-.nav-links a:hover { color: var(--text); }
+
+.nav-links a:hover { 
+  color: var(--text); 
+}
+
 .nav-cta {
   display: inline-block;
   padding: 9px 20px;
-  font-size: 13px; font-weight: 500;
+  font-size: 13px; 
+  font-weight: 500;
   color: var(--bg);
   background: var(--text);
   border-radius: 40px;
@@ -104,12 +218,21 @@ nav {
   transition: opacity 0.2s, transform 0.2s;
   white-space: nowrap;
 }
-.nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+
+.nav-cta:hover { 
+  opacity: 0.98; 
+  transform: translateY(-1px); 
+}
+
+/* ── OPTIONAL (reduce section spacing slightly) ── */
+.section-pad {
+  padding: 50px 0;
+}
 
 /* ── SHARED LAYOUT ── */
 .section { position: relative; z-index: 1; }
 .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
-.section-pad { padding: 96px 0; }
+.section-pad { padding: 60px 0; }
 
 .eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
@@ -139,11 +262,32 @@ h1, h2.display {
   color: var(--text);
 }
 .divider {
-  height: 1px; background: var(--border); margin: 56px 0;
+  height: 1px; background: var(--border); margin:20px 0;
 }
 
+.footer-simple {
+  display: flex;
+  justify-content: center;   /* horizontal center */
+  align-items: center;       /* vertical center */
+
+  text-align: center;
+  padding: 40px 20px;        /* more top & bottom space */
+
+  font-family: var(--font-display); /* premium serif */
+  font-size: 16px;           /* bigger size */
+  letter-spacing: 0.02em;
+
+  color: rgba(255,255,255,0.75);  /* more visible */
+
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin-top: 60px;
+}
+
+
+
+
 /* ── HERO ── */
-#hero { padding: 140px 0 96px; }
+#hero { padding: 80px 0 20px; }
 .hero-grid {
   display: grid;
 grid-template-columns: 1.6fr 0.8fr;
@@ -243,7 +387,7 @@ grid-template-columns: 1.6fr 0.8fr;
 }
 .stat-label { font-size: 14px; color: var(--muted); line-height: 1.45; }
 .stat-badge {
-  display: inline-block; margin-top: 12px;
+  display: inline-block; margin-top: 5px;
   font-size: 10px; font-weight: 500;
   letter-spacing: 0.06em;
   padding: 3px 10px; border-radius: 20px; border: 1px solid;
@@ -570,37 +714,59 @@ grid-template-columns: 1.6fr 0.8fr;
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .stat-num { font-size: 34px; }
 }
+
+
+ @media (max-width: 768px) {
+
+  .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;           /* remove fixed height */
+    padding: 10px 12px;
+  }
+
+  /* ❌ Hide menu links completely */
+  .nav-links {
+    display: none;
+  }
+
+  /* ✅ Keep logo clean */
+  .nav-brand-name {
+    font-size: 16px;
+  }
+
+  /* ✅ Keep CTA visible */
+  .nav-cta {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+}
 </style>
 </head>
 <body>
 
 <!-- ── NAV ── -->
+
+
 <nav>
   <div class="nav-inner">
-
     <a href="#hero" class="nav-brand">
       <img src="https://topmate-staging.s3.amazonaws.com/9NQoYHEJu9apWSS5kdpZmK.png" alt="Mazher Khan">
-      <span class="nav-brand-name">Khan Analytics</span>
+      <span class="nav-brand-name" style="font-size:25px;">Khan Analytics</span>
     </a>
-
-    <br> <!-- forces wrap on smaller width -->
-
     <ul class="nav-links">
-      <li><a href="#skill_roadmap" style="font-size:14px;color:#ffffff;">Roadmap</a></li>
-      <li><a href="#Mentorship_plans" style="font-size:14px;color:#ffffff;">Plans</a></li>
-      <li><a href="#results" style="font-size:14px;color:#ffffff;">Results</a></li>
-      <li><a href="#video-testimonials" style="font-size:14px;color:#ffffff;">Testimonials</a></li>
-      <li><a href="#how_it_works" style="font-size:14px;color:#ffffff;">How Mentorship Works</a></li>
+      <li><a href="#skill_roadmap">Roadmap</a></li>
+      <li><a href="#Mentorship_plans">Plans</a></li>
+      <li><a href="#how_to_apply">How to Apply</a></li>
+      <li><a href="#video-testimonials">Testimonials</a></li>
     </ul>
-
-    <br> <!-- pushes CTA to next line if needed -->
-
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSefKydr62VSD5b5H42FpFMkXMoEWuit0sUYMVjsSUzwqfEQcA/viewform"
-       target="_blank"
-       class="nav-cta">
-       Apply Now
-    </a>
-
+    <a href="https://topmate.io/mazher_khan/2068903"
+   target="_blank"
+   class="nav-cta"
+   style="font-size:15px;color:#000;padding:10px 20px;">
+   Apply Now
+</a>
   </div>
 </nav>
 
@@ -631,12 +797,14 @@ grid-template-columns: 1.6fr 0.8fr;
         <!-- PROGRAM LINE -->
         <div style="
           font-size:18px;
-          color:var(--text);
+          color:#FFFBEB;
           margin-top:8px;
           font-weight:500;
         ">
-          Data Science & Analytics 1:1 Mentorship Program
+          Data Science & Analytics 1:1 Mentorship Program <br>
         </div>
+
+ 
 
         <!-- HEADLINE FIXED -->
         <h1 class="hero-title fade-in d2" style="
@@ -661,54 +829,61 @@ grid-template-columns: 1.6fr 0.8fr;
         <!-- CHECKLIST -->
         <ul class="hero-checklist fade-in d3" style="
           font-size:16px;
-          color:var(--text);
+          color:white;
           font-weight:500;
         ">
-          <li><span class="check-icon">✓</span> 1:1 video sessions + 500+ hrs of curated content</li>
-          <li><span class="check-icon">✓</span> Skill development with 2 hands-on real-world projects</li>
-          <li><span class="check-icon">✓</span> Resume building & LinkedIn optimization</li>
-          <li><span class="check-icon">✓</span> Mock interviews & full interview preparation</li>
-          <li><span class="check-icon">✓</span> Unlimited instant call & chat support</li>
-          <li><span class="check-icon">✓</span> Exclusive job opportunities & referrals</li>
-          <li><span class="check-icon">✓</span> Personalized plan of action from Day 1</li>
+          <li><span class="check-icon">✓</span> 1:1 Video Sessions + 500+ Hrs of curated Content</li>
+          <li><span class="check-icon">✓</span> Skill Development with 2 hands-on Real-World Projects</li>
+          <li><span class="check-icon">✓</span> Resume Building & LinkedIn Optimization</li>
+          <li><span class="check-icon">✓</span> Mock Interviews & Full Interview Preparation</li>
+          <li><span class="check-icon">✓</span> Unlimited Instant Call & Chat Support</li>
+          <li><span class="check-icon">✓</span> Exclusive Job Opportunities & Referrals</li>
+          <li><span class="check-icon">✓</span> Personalized Plan of Action from Day 1</li>
         </ul>
 
-        <!-- CTA -->
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSefKydr62VSD5b5H42FpFMkXMoEWuit0sUYMVjsSUzwqfEQcA/viewform" 
-           target="_blank" 
-           class="btn-primary fade-in d4">
-          🚀 Apply for 1:1 Mentorship
-        </a>
-
+<a href="https://topmate.io/mazher_khan/2068903" 
+   target="_blank" 
+   class="btn-primary fade-in d4"
+   style="font-size:18px; color:#000;">
+  🚀 Apply for 1:1 Mentorship
+</a>
       </div>
 
       <!-- RIGHT PROFILE -->
-      <div class="hero-profile fade-in d3" style="text-align:left; margin-left:20px;">
+     <div class="hero-profile fade-in d3" style="text-align:left; margin-left:20px;">
 
-        <img src="https://topmate-staging.s3.amazonaws.com/9NQoYHEJu9apWSS5kdpZmK.png" alt="Mazher Khan">
+  <img src="https://topmate-staging.s3.amazonaws.com/9NQoYHEJu9apWSS5kdpZmK.png" 
+       alt="Mazher Khan"
+       style="
+         width:180px;
+         height:180px;
+         object-fit:cover;
+         border-radius:50%;
+         display:block;
+       ">
 
-        <div class="profile-name" style="
-          font-size:40px;
-          font-weight:700;
-          margin-top:12px;
-        ">
-          Mazher Khan
-        </div>
+  <div class="profile-name" style="
+    font-size:40px;
+    font-weight:700;
+    margin-top:16px;
+  ">
+    Mazher Khan
+  </div>
 
-        <div class="profile-title" style="
-          font-size:16px;
-          color:var(--text);
-          margin-top:4px;
-        ">
-  (8 Years in Data Science & Analytics)
-        </div>
+  <div class="profile-title" style="
+    font-size:16px;
+    color:var(--text);
+    margin-top:6px;
+  ">
+    (8 Years in Data Science & Analytics)
+  </div>
 
-        <div class="profile-flags" style="
-          margin-top:10px;
-          font-size:15px;
-          color:var(--text);
-          line-height:2.2;
-        ">
+  <div class="profile-flags" style="
+    margin-top:10px;
+    font-size:15px;
+    color:var(--text);
+    line-height:2.2;
+  ">
 
 
     <div>🏆 <strong>TEDx Speaker · Best Data Creator Award</strong></div>
@@ -966,9 +1141,11 @@ grid-template-columns: 1.6fr 0.8fr;
 </section>
 
 <!-- ── TEXT TESTIMONIALS ── -->
+
+
 <section id="text-testimonials" class="section section-pad">
   <div class="container">
-    <h2 class="display" style="font-size:clamp(28px,4vw,44px);margin-bottom:40px;">Voices from <em style="font-style:italic;color:var(--accent);">8 countries</em></h2>
+    <h2 class="display" style="font-size:clamp(28px,4vw,44px);margin-bottom:40px;">Voices from <em style="font-style:italic;color:var(--accent);">10+ countries</em>  -  Written Testimonials </h2>
     <div class="testi-scroll-wrap">
       <button class="video-scroll-btn prev" onclick="document.getElementById('testiGrid').scrollBy({left:-320,behavior:'smooth'})">&#8592;</button>
       <div class="testi-grid" id="testiGrid">
@@ -1054,97 +1231,95 @@ grid-template-columns: 1.6fr 0.8fr;
 </section>
 
 <!-- ── WHY MENTORSHIP ── -->
-
-
 <section id="why" class="section section-pad">
   <div class="container">
 
-    <h2 class="display" style="font-size:clamp(34px,5vw,56px);margin-bottom:16px;">
+    <h2 class="display" style="font-size:clamp(32px,4.5vw,52px);margin-bottom:18px;">
       Why you need 1:1 Mentorship to <em style="font-style:italic;color:var(--accent);">land faster</em>
     </h2>
 
-    <p style="font-size:20px;color:white;margin-bottom:48px;max-width:600px;line-height:1.6;">
+    <p style="font-size:18px;color:white;margin-bottom:42px;max-width:600px;line-height:1.7;">
       Clarity, focus, and the confidence to take bold steps toward your dream career.
     </p>
     
     <div class="why-grid">
 
 <div class="why-card">
-  <div style="display:flex;align-items:center;gap:10px;font-size:18px;font-weight:600;color:#ffffff;">
-    <span style="font-size:22px;">🎯</span>
+  <div style="display:flex;align-items:center;gap:10px;font-size:17px;font-weight:600;color:#ffffff;">
+    <span style="font-size:17px;">🎯</span>
     Clarity on what & how much to study
   </div>
-  <div style="font-size:16px;line-height:1.7;color:#cbd5e1;margin-top:10px;">
+  <div style="font-size:15px;line-height:1.6;color:#cbd5e1;margin-top:10px;">
     Know exactly what to focus on — no more guesswork or overwhelm.
   </div>
 </div>
 
 <div class="why-card">
-  <div style="display:flex;align-items:center;gap:10px;font-size:18px;font-weight:600;color:#ffffff;">
-    <span style="font-size:22px;">🛣️</span>
+  <div style="display:flex;align-items:center;gap:10px;font-size:17px;font-weight:600;color:#ffffff;">
+    <span style="font-size:17px;">🛣️</span>
     Structured learning path
   </div>
-  <div style="font-size:16px;line-height:1.7;color:#cbd5e1;margin-top:10px;">
+  <div style="font-size:15px;line-height:1.6;color:#cbd5e1;margin-top:10px;">
     Follow a step-by-step roadmap instead of jumping randomly between tools.
   </div>
 </div>
 
 <div class="why-card">
-  <div style="display:flex;align-items:center;gap:10px;font-size:18px;font-weight:600;color:#ffffff;">
-    <span style="font-size:22px;">🎤</span>
+  <div style="display:flex;align-items:center;gap:10px;font-size:17px;font-weight:600;color:#ffffff;">
+    <span style="font-size:17px;">🎤</span>
     Understanding interview standards
   </div>
-  <div style="font-size:16px;line-height:1.7;color:#cbd5e1;margin-top:10px;">
+  <div style="font-size:15px;line-height:1.6;color:#cbd5e1;margin-top:10px;">
     Learn what's expected in real interviews — basic vs advanced, must-know topics.
   </div>
 </div>
 
 <div class="why-card">
-  <div style="display:flex;align-items:center;gap:10px;font-size:18px;font-weight:600;color:#ffffff;">
-    <span style="font-size:22px;">📄</span>
+  <div style="display:flex;align-items:center;gap:10px;font-size:17px;font-weight:600;color:#ffffff;">
+    <span style="font-size:17px;">📄</span>
     CV that gets interviews
   </div>
-  <div style="font-size:16px;line-height:1.7;color:#cbd5e1;margin-top:10px;">
+  <div style="font-size:15px;line-height:1.6;color:#cbd5e1;margin-top:10px;">
     A polished, ATS-friendly CV tailored to your background and target roles.
   </div>
 </div>
 
 <div class="why-card">
-  <div style="display:flex;align-items:center;gap:10px;font-size:18px;font-weight:600;color:#ffffff;">
-    <span style="font-size:22px;">🧠</span>
+  <div style="display:flex;align-items:center;gap:10px;font-size:17px;font-weight:600;color:#ffffff;">
+    <span style="font-size:17px;">🧠</span>
     Help on tough concepts
   </div>
-  <div style="font-size:16px;line-height:1.7;color:#cbd5e1;margin-top:10px;">
+  <div style="font-size:15px;line-height:1.6;color:#cbd5e1;margin-top:10px;">
     Understand tricky topics faster with clear explanations, not just video watching.
   </div>
 </div>
 
 <div class="why-card">
-  <div style="display:flex;align-items:center;gap:10px;font-size:18px;font-weight:600;color:#ffffff;">
-    <span style="font-size:22px;">🚫</span>
+  <div style="display:flex;align-items:center;gap:10px;font-size:17px;font-weight:600;color:#ffffff;">
+    <span style="font-size:17px;">🚫</span>
     Avoid beginner mistakes
   </div>
-  <div style="font-size:16px;line-height:1.7;color:#cbd5e1;margin-top:10px;">
+  <div style="font-size:15px;line-height:1.6;color:#cbd5e1;margin-top:10px;">
     Skip common pitfalls in projects, applications, and interviews with expert guidance.
   </div>
 </div>
 
 <div class="why-card">
-  <div style="display:flex;align-items:center;gap:10px;font-size:18px;font-weight:600;color:#ffffff;">
-    <span style="font-size:22px;">💼</span>
+  <div style="display:flex;align-items:center;gap:10px;font-size:17px;font-weight:600;color:#ffffff;">
+    <span style="font-size:17px;">💼</span>
     Real-world projects
   </div>
-  <div style="font-size:16px;line-height:1.7;color:#cbd5e1;margin-top:10px;">
+  <div style="font-size:15px;line-height:1.6;color:#cbd5e1;margin-top:10px;">
     Build projects that reflect real business problems and impress recruiters.
   </div>
 </div>
 
 <div class="why-card">
-  <div style="display:flex;align-items:center;gap:10px;font-size:18px;font-weight:600;color:#ffffff;">
-    <span style="font-size:22px;">📅</span>
+  <div style="display:flex;align-items:center;gap:10px;font-size:17px;font-weight:600;color:#ffffff;">
+    <span style="font-size:17px;">📅</span>
     Accountability & consistency
   </div>
-  <div style="font-size:16px;line-height:1.7;color:#cbd5e1;margin-top:10px;">
+  <div style="font-size:15px;line-height:1.6;color:#cbd5e1;margin-top:10px;">
     Stay on track with regular check-ins, progress reviews, and milestone tracking.
   </div>
 </div>
@@ -1152,7 +1327,6 @@ grid-template-columns: 1.6fr 0.8fr;
     </div>
   </div>
 </section>
-
 <!-- ── PLANS ── -->
 <section id="Mentorship_plans" class="section section-pad" style="background:var(--surface);">
   <div class="container">
@@ -1294,5 +1468,11 @@ grid-template-columns: 1.6fr 0.8fr;
 
 </body>
 </html>
+
+
+
+<footer class="footer-simple">
+  © 2026 Khan Analytics. All rights reserved
+</footer>
 
 
