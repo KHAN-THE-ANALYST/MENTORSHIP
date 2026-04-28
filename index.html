@@ -1,935 +1,1322 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>1:1 Mentorship and Career Guidance with MAZHER KHAN</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          },
-        }
-      }
-    }
-  </script>
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khan Analytics — 1:1 Data Science & Analytics Mentorship</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --bg: #0a0a0f;
+  --surface: #12121a;
+  --surface2: #1a1a26;
+  --surface3: #1e1e2e;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.13);
+  --accent: #7B6EF6;
+  --accent2: #5BBFAA;
+  --gold: #E8C46A;
+  --text: #F5F3FF;
+  --muted: rgba(240,238,248,0.75);
+  --subtle: rgba(240,238,248,0.45);
+  --font-display: 'DM Serif Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Ambient glows */
+body::before {
+  content: '';
+  position: fixed; top: -40%; left: -20%;
+  width: 80%; height: 80%;
+  background: radial-gradient(ellipse, rgba(123,110,246,0.07) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+body::after {
+  content: '';
+  position: fixed; bottom: -30%; right: -10%;
+  width: 60%; height: 60%;
+  background: radial-gradient(ellipse, rgba(91,191,170,0.06) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,10,15,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border2);
+}
+.nav-inner {
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 28px;
+  height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none;
+}
+.nav-brand img {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border2);
+  object-fit: cover;
+}
+.nav-brand-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.nav-links {
+  display: flex; gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 14px; font-weight: 500;
+  color: rgba(240,238,248,0.7);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  display: inline-block;
+  padding: 9px 20px;
+  font-size: 13px; font-weight: 500;
+  color: var(--bg);
+  background: var(--text);
+  border-radius: 40px;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+.nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+
+/* ── SHARED LAYOUT ── */
+.section { position: relative; z-index: 1; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+.section-pad { padding: 96px 0; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11.5px; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 18px;
+}
+.eyebrow-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50% { opacity:0.35; transform:scale(0.65); }
+}
+.section-label {
+  font-size: 11.5px; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--subtle); margin-bottom: 22px;
+}
+h1, h2.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.divider {
+  height: 1px; background: var(--border); margin: 56px 0;
+}
+
+/* ── HERO ── */
+#hero { padding: 140px 0 96px; }
+.hero-grid {
+  display: grid;
+grid-template-columns: 1.6fr 0.8fr;
+  gap: 64px; align-items: center;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 7vw, 76px);
+  font-weight: 400; line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+.hero-title em { font-style: italic; color: var(--accent); }
+.hero-sub {
+  font-size: 16px; color: var(--muted);
+  font-weight: 300; max-width: 520px;
+  line-height: 1.75; margin-bottom: 36px;
+}
+.hero-checklist {
+  list-style: none; display: flex; flex-direction: column; gap: 10px;
+  margin-bottom: 40px;
+}
+.hero-checklist li {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 15.5px; color: var(--muted); font-weight: 400;
+}
+.check-icon {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: rgba(91,191,170,0.15);
+  border: 1px solid rgba(91,191,170,0.4);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: var(--accent2); font-size: 10px;
+}
+.btn-primary {
+  display: inline-block;
+  padding: 14px 32px;
+  font-size: 14px; font-weight: 500;
+  color: var(--bg);
+  background: var(--text);
+  border-radius: 40px;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+.hero-profile { text-align: center; }
+.hero-profile img {
+  width: 200px; height: 200px;
+  border-radius: 50%; object-fit: cover;
+  border: 1.5px solid var(--border2);
+}
+.profile-name {
+  font-family: var(--font-display);
+  font-size: 26px; margin-top: 18px; margin-bottom: 4px;
+}
+.profile-title {
+  font-size: 13px; color: var(--muted);
+  letter-spacing: 0.05em;
+}
+.profile-flags {
+  font-size: 12px; color: rgba(240,238,248,0.55);
+  margin-top: 10px; line-height: 1.6;
+}
+
+/* ── RESULTS METRICS ── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.stat-cell {
+  background: var(--surface);
+  padding: 32px 28px;
+  transition: background 0.25s;
+}
+.stat-cell:hover { background: var(--surface2); }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 44px; font-weight: 400;
+  color: var(--text); line-height: 1;
+  margin-bottom: 10px;
+}
+.stat-num sup {
+  font-family: var(--font-body);
+  font-size: 18px; font-weight: 300;
+  vertical-align: super; color: var(--muted);
+}
+.stat-num .unit {
+  font-family: var(--font-body);
+  font-size: 16px; font-weight: 300;
+  color: var(--muted); margin-left: 2px;
+}
+.stat-label { font-size: 14px; color: var(--muted); line-height: 1.45; }
+.stat-badge {
+  display: inline-block; margin-top: 12px;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 3px 10px; border-radius: 20px; border: 1px solid;
+}
+.badge-green { color: var(--accent2); border-color: rgba(91,191,170,0.3); background: rgba(91,191,170,0.08); }
+.badge-purple { color: var(--accent); border-color: rgba(123,110,246,0.3); background: rgba(123,110,246,0.08); }
+.badge-gold { color: var(--gold); border-color: rgba(232,196,106,0.3); background: rgba(232,196,106,0.08); }
+
+.highlights {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; margin-bottom: 0;
+}
+.hl-card {
+  border-radius: 18px; padding: 32px 30px;
+  position: relative; overflow: hidden;
+}
+.hl-card::before {
+  content: ''; position: absolute; inset: 0;
+  border-radius: 18px; border: 1px solid var(--border2);
+  pointer-events: none;
+}
+.hl-gold { background: linear-gradient(135deg, #1c1708 0%, #0f0d00 100%); }
+.hl-gold::after {
+  content: ''; position: absolute;
+  top: -40px; right: -40px; width: 120px; height: 120px;
+  background: radial-gradient(circle, rgba(232,196,106,0.15) 0%, transparent 70%);
+}
+.hl-teal { background: linear-gradient(135deg, #071815 0%, #050e0b 100%); }
+.hl-teal::after {
+  content: ''; position: absolute;
+  top: -40px; right: -40px; width: 120px; height: 120px;
+  background: radial-gradient(circle, rgba(91,191,170,0.15) 0%, transparent 70%);
+}
+.hl-label {
+  font-size: 11.5px; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 12px;
+}
+.hl-gold .hl-label { color: var(--gold); opacity: 0.9; }
+.hl-teal .hl-label { color: var(--accent2); opacity: 0.9; }
+.hl-value {
+  font-family: var(--font-display);
+  font-size: 38px; line-height: 1; margin-bottom: 8px;
+}
+.hl-gold .hl-value { color: var(--gold); }
+.hl-teal .hl-value { color: var(--accent2); }
+.hl-sub { font-size: 14px; color: var(--muted); font-weight: 300; }
+
+/* ── GLOBAL RESULTS LIST ── */
+.results-list {
+  list-style: none; display: flex; flex-direction: column; gap: 14px;
+  margin-top: 32px;
+}
+.results-list li {
+  padding: 18px 22px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  font-size: 15px; color: var(--muted); line-height: 1.6;
+  transition: border-color 0.2s, background 0.2s;
+}
+.results-list li:hover { background: var(--surface2); border-color: var(--border2); }
+.results-list li strong { color: var(--text); font-weight: 500; }
+.country-sub {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;
+}
+.country-chip {
+  font-size: 13px; padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border2);
+  background: var(--surface2);
+  color: var(--muted);
+}
+
+/* ── VIDEO TESTIMONIALS ── */
+.video-scroll-wrap { position: relative; }
+.video-scroll-btn {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--border2);
+  color: var(--text); font-size: 16px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.video-scroll-btn:hover { background: rgba(255,255,255,0.15); }
+.video-scroll-btn.prev { left: -20px; }
+.video-scroll-btn.next { right: -20px; }
+.video-grid {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-auto-flow: column;
+  grid-auto-columns: 300px;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 4px 2px 12px;
+}
+.video-grid::-webkit-scrollbar { display: none; }
+.video-card {
+  aspect-ratio: 16/9;
+  border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.video-card iframe { width: 100%; height: 100%; border: none; }
+
+/* ── TEXT TESTIMONIALS ── */
+.testi-scroll-wrap { position: relative; }
+.testi-grid {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-auto-flow: column;
+  grid-auto-columns: 300px;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 4px 2px 12px;
+}
+.testi-grid::-webkit-scrollbar { display: none; }
+.testi-card {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 16px;
+  padding: 22px 20px;
+  font-size: 14px; color: var(--muted); line-height: 1.6;
+  display: flex; flex-direction: column; justify-content: space-between;
+  gap: 12px;
+  transition: background 0.2s;
+}
+.testi-card:hover { background: var(--surface2); }
+.testi-author {
+  font-size: 12.5px; font-weight: 600;
+  color: var(--accent); letter-spacing: 0.04em;
+  margin-top: auto; padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+/* ── ROADMAP ── */
+.roadmap-phase-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 400; margin-bottom: 8px;
+}
+.roadmap-phase-title em { font-style: italic; }
+.phase-teal em { color: var(--accent2); }
+.phase-purple em { color: var(--accent); }
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.roadmap-cell {
+  background: var(--surface);
+  padding: 28px 24px;
+  transition: background 0.2s;
+}
+.roadmap-cell:hover { background: var(--surface2); }
+.roadmap-cell-title {
+  font-size: 14.5px; font-weight: 600;
+  color: var(--text); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.roadmap-cell ul {
+  list-style: none; display: flex; flex-direction: column; gap: 7px;
+}
+.roadmap-cell ul li {
+  font-size: 14px; color: var(--muted);
+  padding-left: 14px; position: relative;
+}
+.roadmap-cell ul li::before {
+  content: '—'; position: absolute; left: 0;
+  color: var(--subtle); font-size: 10px; top: 3px;
+}
+
+/* ── WHY MENTORSHIP CARDS ── */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+.why-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px; padding: 24px 20px;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  cursor: default;
+}
+.why-card:hover {
+  background: var(--surface2);
+  border-color: var(--border2);
+  transform: translateY(-3px);
+}
+.why-card-icon { font-size: 20px; margin-bottom: 12px; }
+.why-card-title { font-size: 14.5px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+.why-card-body { font-size: 13.5px; color: var(--muted); line-height: 1.55; }
+
+/* ── PLANS ── */
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.plan-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px; padding: 32px 28px;
+  position: relative; transition: border-color 0.2s, background 0.2s;
+}
+.plan-card:hover { background: var(--surface2); border-color: var(--border2); }
+.plan-card.featured { border-color: rgba(91,191,170,0.4); }
+.plan-featured-badge {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 4px 14px; border-radius: 20px;
+  background: var(--accent2); color: var(--bg);
+}
+.plan-title {
+  font-family: var(--font-display);
+  font-size: 28px; font-weight: 400;
+  margin-bottom: 6px;
+}
+.plan-sub { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+.plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.plan-features li {
+  font-size: 14px; color: var(--muted);
+  padding-left: 18px; position: relative; line-height: 1.45;
+}
+.plan-features li::before {
+  content: '✓'; position: absolute; left: 0;
+  color: var(--accent2); font-size: 11px; top: 1px;
+}
+.plan-best {
+  margin-top: 24px; padding-top: 18px;
+  border-top: 1px solid var(--border);
+  font-size: 12.5px; color: var(--muted); line-height: 1.5;
+}
+
+/* ── HOW TO APPLY ── */
+.apply-card {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 24px; padding: 56px 48px;
+  max-width: 700px; margin: 0 auto;
+  text-align: center;
+}
+.apply-steps {
+  display: flex; flex-direction: column; gap: 20px;
+  text-align: left; margin: 36px 0;
+}
+.apply-step {
+  display: flex; align-items: flex-start; gap: 16px;
+}
+.step-num {
+  width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+  background: rgba(123,110,246,0.15);
+  border: 1px solid rgba(123,110,246,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 500; color: var(--accent);
+}
+.step-text { font-size: 14px; color: var(--muted); line-height: 1.6; }
+.step-text strong { color: var(--text); font-weight: 500; }
+
+/* ── HOW IT WORKS ── */
+.hiw-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 20px; overflow: hidden;
+}
+.hiw-cell {
+  background: var(--surface);
+  padding: 32px 28px; transition: background 0.2s;
+}
+.hiw-cell:hover { background: var(--surface2); }
+.hiw-num {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(123,110,246,0.12);
+  border: 1px solid rgba(123,110,246,0.25);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 500; color: var(--accent);
+  margin-bottom: 16px;
+}
+.hiw-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 10px; }
+.hiw-body { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+/* ── COMPANIES ── */
+.badge-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.company-badge {
+  font-size: 13.5px; font-weight: 500;
+  padding: 7px 16px; border-radius: 40px;
+  border: 1px solid var(--border2);
+  background: var(--surface); color: var(--muted);
+  transition: all 0.2s; cursor: default;
+}
+.company-badge:hover { border-color: rgba(123,110,246,0.4); color: var(--text); background: var(--surface2); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeUp 0.65s ease both; }
+.d1 { animation-delay: 0.05s; }
+.d2 { animation-delay: 0.12s; }
+.d3 { animation-delay: 0.2s; }
+.d4 { animation-delay: 0.28s; }
+.d5 { animation-delay: 0.36s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-profile { order: -1; }
+  .hero-profile img { width: 140px; height: 140px; }
+  .highlights { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .apply-card { padding: 36px 24px; }
+}
+@media (max-width: 500px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .stat-num { font-size: 34px; }
+}
+</style>
 </head>
+<body>
 
-<body class="bg-gradient-to-br from-[#dceeff] via-[#eaf4ff] to-[#f4faff] text-black antialiased">
-
-<!-- Fixed Top Navigation -->
-<nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-lg border-b border-gray-300 font-extrabold shadow-sm">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex h-20 items-center justify-between">
-
-      <!-- Left: Logo & Name -->
-      <div class="flex items-center gap-4">
-        <img class="h-10 w-10 rounded-full shadow-md" src="https://topmate-staging.s3.amazonaws.com/9NQoYHEJu9apWSS5kdpZmK.png" alt="MAZHER KHAN">
-        <span class="hidden sm:block text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-black to-gray-700 tracking-wide">
-          MAZHER KHAN
-        </span>
-      </div>
-
-
-
-      <!-- Center: Navigation Links -->
-      <div class="hidden md:flex space-x-8">
-        <a href="#skill_roadmap" class="relative text-black font-semibold text-base hover:text-blue-700 transition duration-200 after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-blue-700 hover:after:w-full after:transition-all">
-          Roadmap
-            <style>
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
-        </a>
-        <a href="#Mentorship_plans" class="relative text-black font-semibold text-base hover:text-blue-700 transition duration-200 after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-blue-700 hover:after:w-full after:transition-all">
-          Mentorship Plan
-            <style>
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
-        </a>
-        <a href="#how_to_apply" class="relative text-black font-semibold text-base hover:text-blue-700 transition duration-200 after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-blue-700 hover:after:w-full after:transition-all">
-          How to Apply
-            <style>
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
-        </a>
-        <a href="#results" class="relative text-black font-semibold text-base hover:text-blue-700 transition duration-200 after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-blue-700 hover:after:w-full after:transition-all">
-          Success Stories
-            <style>
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
-  </style>
-        </a>
-        <a href="#video-testimonials" class="relative text-black font-semibold text-base hover:text-blue-700 transition duration-200 after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-blue-700 hover:after:w-full after:transition-all">
-          Testimonials
-            <style>
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
-  
-        </a>
-      </div>
-
-      <!-- Right: CTA Button -->
-      <div class="flex items-center">
-    <a 
-  href="https://docs.google.com/forms/d/e/1FAIpQLSefKydr62VSD5b5H42FpFMkXMoEWuit0sUYMVjsSUzwqfEQcA/viewform" 
-  target="_blank"
-  class="ml-4 px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-[#1e3a8a] via-[#1e40af] to-[#1e3a8a] rounded-xl shadow hover:scale-105 transition-all duration-200 hover:brightness-110"
->
-  🚀 Apply for 1:1 Mentorship
-</a>
-
-      </div>
-
-    </div>
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-brand">
+      <img src="https://topmate-staging.s3.amazonaws.com/9NQoYHEJu9apWSS5kdpZmK.png" alt="Mazher Khan">
+      <span class="nav-brand-name">Khan Analytics</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#skill_roadmap">Roadmap</a></li>
+      <li><a href="#Mentorship_plans">Plans</a></li>
+      <li><a href="#how_to_apply">How to Apply</a></li>
+      <li><a href="#video-testimonials">Testimonials</a></li>
+    </ul>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSefKydr62VSD5b5H42FpFMkXMoEWuit0sUYMVjsSUzwqfEQcA/viewform" target="_blank" class="nav-cta">Apply Now</a>
   </div>
 </nav>
 
 
+<!-- ── HERO ── -->
+<section id="hero" class="section">
+  <div class="container">
+    <div class="hero-grid fade-in d1">
+
+      <!-- LEFT -->
+      <div>
 
 
 
-
-
-  <main class="pt-20">
-    <!-- Hero Section -->
-    <section id="hero" class="py-20 sm:py-28">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-16 items-center">
-          <div class="lg:col-span-2 text-left">
-<h1 class="text-6xl sm:text-7xl md:text-8xl font-extrabold tracking-tight 
-  bg-gradient-to-r from-[#0f172a] via-[#1e3a8a] to-[#3b82f6] 
-  bg-clip-text text-transparent 
-  drop-shadow-[2px_2px_20px_rgba(59,130,246,0.6)] ">
-  Khan Analytics
-</h1>
-
-
-            <h2 class="mt-4 text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-gray-800 font-poppins">
-              Data Science & Analytics 1:1 Mentorship Program
-            </h2>
-
-<ul class="mt-10 space-y-4 text-[1.1rem] leading-relaxed font-bold text-black font-poppins">
-  <li class="flex items-start gap-3">
-    <span class="text-blue-600 text-xl">✔</span>
-    1:1 Video Sessions & 500+ Hours of Content
-  </li>
-  <li class="flex items-start gap-3">
-    <span class="text-blue-600 text-xl">✔</span>
-    Skill Development & 2 Hands-on Projects
-  </li>
-  <li class="flex items-start gap-3">
-    <span class="text-blue-600 text-xl">✔</span>
-    Resume Building & LinkedIn Optimization
-  </li>
-  <li class="flex items-start gap-3">
-    <span class="text-blue-600 text-xl">✔</span>
-    Mock Interviews & Interview Preparation
-  </li>
-  <li class="flex items-start gap-3">
-    <span class="text-blue-600 text-xl">✔</span>
-    Detailed Plan of Action
-  </li>
-  <li class="flex items-start gap-3">
-    <span class="text-blue-600 text-xl">✔</span>
-    Unlimited Instant Call & Instant Chat
-  </li>
-  <li class="flex items-start gap-3">
-    <span class="text-blue-600 text-xl">✔</span>
-    Exclusive Job Opportunities & Referrals
-  </li>
-</ul>
-
-
-            <div class="mt-10">
-<a 
-  href="https://docs.google.com/forms/d/e/1FAIpQLSefKydr62VSD5b5H42FpFMkXMoEWuit0sUYMVjsSUzwqfEQcA/viewform" 
-  target="_blank"
-  class="inline-block px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-[#1e3a8a] via-[#1e40af] to-[#1e3a8a] rounded-2xl shadow-md hover:scale-105 transition-all"
->
-  🚀 Apply for 1:1 Mentorship
-</a>
-            </div>
-          </div>
-
-
-
-
-<div class="flex flex-col items-center gap-5 text-center">
-  <!-- Bigger Circular Image -->
-  <img
-    class="w-64 h-64 rounded-full object-cover ring-4 ring-blue-200 shadow-xl"
-    src="https://topmate-staging.s3.amazonaws.com/9NQoYHEJu9apWSS5kdpZmK.png"
-    alt="Mazher Khan Profile Picture"
-  />
-
-<div class="max-w-xl ml-auto text-left space-y-2">
-  <h2 class="text-4xl font-extrabold text-blue-900">Mazher Khan</h2>
-<p class="text-xl font-medium text-gray-800 whitespace-nowrap">
-  Senior Data Analyst || 7+ Years in Analytics
-</p>
-  <p class="text-base text-gray-700 leading-relaxed mt-2">
-    🎯 <strong>100+ Interviews</strong> · <strong>25+ Job Offers</strong><br />
-    🌍 Mentored <strong>100+ Placed Globally</strong> across  
-    🇮🇳 India, 🇺🇸 USA, 🇬🇧 UK, 🇨🇦 Canada, 🇮🇪 Ireland, 🇩🇪 Germany, 🇦🇺 Australia, 🇦🇪 UAE & more.
-  </p>
-</div>
-
-
-</section>
-
-
-
-
-<section id="skill_roadmap" class="py-16 sm:py-24 bg-[#121c2d]">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
-
-
-
-    <!-- MAIN ROADMAP TITLE -->
-    <div class="text-center mb-20">
-      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-yellow-400 via-white to-cyan-500 bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(255,255,255,0.3)]">
-         Data Analyst / Business Analyst : Roadmap
-      </h1>
-      <p class="mt-4 text-lg text-slate-300 max-w-3xl mx-auto">
-        A structured and practical path to become a high-impact analyst, from technical skills to job-winning strategies.
-      </p>
-    </div>
-
-    <!-- PHASE 1 -->
-    <div class="mb-20">
-      <!-- Title -->
-      <div class="mb-12">
-        <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-teal-400 via-white to-blue-500 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(94,234,212,0.5)]">
-          📘 Phase 1: Skill Development
-        </h2>
-        <p class="mt-4 text-lg text-slate-300">Build strong technical and analytical foundations before jumping into job search.</p>
-      </div>
-
-      <!-- Grid of Verticals -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <!-- Technical Skills -->
-        <div class="bg-blue-50 rounded-2xl p-6 border border-blue-200 shadow-md">
-          <h3 class="text-xl font-bold text-blue-900 mb-2">🛠️ Technical Skills</h3>
-          <ul class="text-blue-800 font-semibold list-disc list-inside space-y-1">
-            <li>SQL</li>
-            <li>Python</li>
-            <li>Power BI</li>
-            <li>Excel</li>
-          </ul>
+        <!-- BIG BRAND -->
+        <div style="
+          margin-top:14px;
+          font-size:42px;
+          font-weight:800;
+          line-height:1.1;
+          background:linear-gradient(90deg,#7B6EF6,#3b82f6);
+          -webkit-background-clip:text;
+          -webkit-text-fill-color:transparent;
+        ">
+          Khan Analytics
         </div>
 
-        <!-- Coursework -->
-        <div class="bg-green-50 rounded-2xl p-6 border border-green-200 shadow-md">
-          <h3 class="text-xl font-bold text-green-900 mb-2">📘 Coursework</h3>
-          <ul class="text-green-800 font-semibold list-disc list-inside space-y-1">
-             <li>Maths & Statistics</li>
-    <li>Machine Learning (Basics)</li>
-    <li>ETL / Data Handling</li>
-    <li>Git & GitHub</li>
-    <li>Cloud Basics</li>
-    <li>A/B Experimentation</li>
-    
-          </ul>
+        <!-- PROGRAM LINE -->
+        <div style="
+          font-size:18px;
+          color:var(--text);
+          margin-top:8px;
+          font-weight:500;
+        ">
+          Data Science & Analytics 1:1 Mentorship Program
         </div>
 
-        <!-- Critical Thinking -->
-        <div class="bg-purple-50 rounded-2xl p-6 border border-purple-200 shadow-md">
-          <h3 class="text-xl font-bold text-purple-900 mb-2">🧠 Critical Thinking</h3>
-          <ul class="text-purple-800 font-semibold list-disc list-inside space-y-1">
-            <li>Puzzles</li>
-            <li>Guesstimates</li>
-            <li>Business Case Studies</li>
-            <li>Product Case Studies</li>
-            <li>Root Cause Analysis</li>
-            <li>Product Metrics</li>
-          </ul>
-        </div>
+        <!-- HEADLINE FIXED -->
+        <h1 class="hero-title fade-in d2" style="
+          max-width:640px;
+          line-height:1.05;
+          letter-spacing:-0.5px;
+        ">
+          Land your<br>
+          <em style="font-size:1.05em;">dream role</em><br>
+          in data.
+        </h1>
 
-        <!-- Managerial -->
-        <div class="bg-yellow-50 rounded-2xl p-6 border border-yellow-200 shadow-md">
-          <h3 class="text-xl font-bold text-yellow-900 mb-2">👔 Managerial</h3>
-          <ul class="text-yellow-800 font-semibold list-disc list-inside space-y-1">
-            <li>Behavioral Questions</li>
-            <li>STAR Framework</li>
-            <li>Stakeholder Communication</li>
-            <li>Requirements Gatherings</li>            
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- PHASE 2 -->
-    <div>
-      <!-- Title -->
-      <div class="mb-12">
-        <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-pink-400 via-white to-red-500 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(251,113,133,0.5)]">
-          🎯 Phase 2: Job Search Preparation
-        </h2>
-        <p class="mt-4 text-lg text-slate-300">Apply your skills with confidence and get interview-ready.</p>
-      </div>
-
-      <!-- Grid of Verticals -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <!-- Projects -->
-        <div class="bg-rose-50 rounded-2xl p-6 border border-rose-200 shadow-md">
-          <h3 class="text-xl font-bold text-rose-900 mb-2">💼 Hands-on Projects</h3>
-          <ul class="text-rose-800 font-semibold list-disc list-inside space-y-1">
-            <li>Business Case Projects</li>
-            <li>Portfolio Building</li>
-            <li>Dashboard Projects</li>
-            <li>EDA & Data Modeling</li>
-    <li>Storytelling with Data</li>
-          </ul>
-        </div>
-        
-        
-        
-
-        <!-- Resume -->
-        <div class="bg-indigo-50 rounded-2xl p-6 border border-indigo-200 shadow-md">
-          <h3 class="text-xl font-bold text-indigo-900 mb-2">📄 Resume & ATS</h3>
-          <ul class="text-indigo-800 font-semibold list-disc list-inside space-y-1">
-            <li>Resume Building</li>
-            <li>ATS Friendly</li>
-            <li>Tailored for Roles</li>
-            <li>Metric-driven Bullet Points</li>
-      
-          </ul>
-        </div>
-
-
-        <!-- LinkedIn -->
-        <div class="bg-orange-50 rounded-2xl p-6 border border-orange-200 shadow-md">
-          <h3 class="text-xl font-bold text-orange-900 mb-2">🔗 LinkedIn Optimization</h3>
-          <ul class="text-orange-800 font-semibold list-disc list-inside space-y-1">
-            <li>Headline + Summary</li>
-            <li>Keywords + Connections</li>
-            <li>Engagement Strategy</li>
-            <li>Featured Projects</li>
-          </ul>
-        </div>
-
-
-
-        <!-- Interviews -->
-        <div class="bg-teal-50 rounded-2xl p-6 border border-teal-200 shadow-md">
-          <h3 class="text-xl font-bold text-teal-900 mb-2">🎤 Interview Prep</h3>
-          <ul class="text-teal-800 font-semibold list-disc list-inside space-y-1">
-            <li>Interview Strategy</li>
-            <li>Mock Interviews</li>
-            <li>Job Application Funnel</li>
-            <li>Interview Question Bank</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
- 
- 
- 
- 
- 
- 
- 
- 
- 
-
-
-
-<section id="problem_solution" class="py-16 sm:py-24 bg-[#0f172a]">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    
-    <!-- Title Block -->
-    <div class="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-16 items-start">
-      <div class="lg:col-span-2 text-left">
-        <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-blue-400 via-white to-blue-500 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(96,165,250,0.5)]">
-          Why You Need 1:1 Mentorship to Land Your Dream Job Faster
-        </h2>
-        <p class="mt-6 text-lg text-slate-300">
-          With personalized mentorship, you'll gain the clarity, focus, and confidence to take bold steps toward your dream career.
+        <!-- DESCRIPTION -->
+        <p class="hero-sub fade-in d3" style="
+          font-size:18px;
+          color:var(--text);
+          font-weight:500;
+        ">
+          Personalized 1:1 Mentorship from skill-building to offer — guided by a  Data Analytics Professional with 8 years of real-world experience.
         </p>
-      </div>
-    </div>
 
-    <!-- Cards Grid -->
-    <div class="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <!-- CHECKLIST -->
+        <ul class="hero-checklist fade-in d3" style="
+          font-size:16px;
+          color:var(--text);
+          font-weight:500;
+        ">
+          <li><span class="check-icon">✓</span> 1:1 video sessions + 500+ hrs of curated content</li>
+          <li><span class="check-icon">✓</span> Skill development with 2 hands-on real-world projects</li>
+          <li><span class="check-icon">✓</span> Resume building & LinkedIn optimization</li>
+          <li><span class="check-icon">✓</span> Mock interviews & full interview preparation</li>
+          <li><span class="check-icon">✓</span> Unlimited instant call & chat support</li>
+          <li><span class="check-icon">✓</span> Exclusive job opportunities & referrals</li>
+          <li><span class="check-icon">✓</span> Personalized plan of action from Day 1</li>
+        </ul>
 
-     <!-- Card 1 -->
-<div class="flex flex-col items-start gap-4 p-6 bg-rose-50 rounded-2xl border border-rose-200 shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer">
-  <h3 class="text-xl font-bold text-rose-900">🎯 Clarity on What & How Much to Study</h3>
-  <p class="text-rose-800 font-semibold">Know exactly what to focus on—no more guesswork or overwhelm.</p>
-</div>
-
-<!-- Card 2 -->
-<div class="flex flex-col items-start gap-4 p-6 bg-emerald-50 rounded-2xl border border-emerald-200 shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer">
-  <h3 class="text-xl font-bold text-emerald-900">🛣️ Structured Learning Path</h3>
-  <p class="text-emerald-800 font-semibold">Follow a step-by-step roadmap instead of jumping randomly between tools.</p>
-</div>
-
-<!-- Card 3 -->
-<div class="flex flex-col items-start gap-4 p-6 bg-indigo-50 rounded-2xl border border-indigo-200 shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer">
-  <h3 class="text-xl font-bold text-indigo-900">🎤 Understanding Interview Standards</h3>
-  <p class="text-indigo-800 font-semibold">Learn what’s expected in real interviews—basic vs advanced, must-know topics, and how to prepare.</p>
-</div>
-
-<!-- Card 4 -->
-<div class="flex flex-col items-start gap-4 p-6 bg-yellow-50 rounded-2xl border border-yellow-200 shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer">
-  <h3 class="text-xl font-bold text-yellow-900">📄 CV That Gets Interviews</h3>
-  <p class="text-yellow-800 font-semibold">Get a polished, ATS-friendly CV tailored to your background and roles you’re targeting.</p>
-</div>
-
-<!-- Card 5 -->
-<div class="flex flex-col items-start gap-4 p-6 bg-blue-50 rounded-2xl border border-blue-200 shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer">
-  <h3 class="text-xl font-bold text-blue-900">🧠 Help on Tough Concepts</h3>
-  <p class="text-blue-800 font-semibold">Understand tricky topics faster with clear explanations, not just video watching.</p>
-</div>
-
-<!-- Card 6 -->
-<div class="flex flex-col items-start gap-4 p-6 bg-orange-50 rounded-2xl border border-orange-200 shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer">
-  <h3 class="text-xl font-bold text-orange-900">🚫 Avoid Beginner Mistakes</h3>
-  <p class="text-orange-800 font-semibold">Skip common pitfalls in projects, applications, and interviews with expert guidance.</p>
-</div>
-
-<!-- Card 7 -->
-<div class="flex flex-col items-start gap-4 p-6 bg-teal-50 rounded-2xl border border-teal-200 shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer">
-  <h3 class="text-xl font-bold text-teal-900">💼 Real-World Projects</h3>
-  <p class="text-teal-800 font-semibold">Build relevant projects that reflect real business problems and impress recruiters.</p>
-</div>
-
-<!-- Card 8 -->
-<div class="flex flex-col items-start gap-4 p-6 bg-purple-50 rounded-2xl border border-purple-200 shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer">
-  <h3 class="text-xl font-bold text-purple-900">📅 Accountability and Consistency</h3>
-  <p class="text-purple-800 font-semibold">Stay on track with regular check-ins, progress reviews, and milestone tracking.</p>
-</div>
-
-
-    </div>
-  </div>
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-<section class="bg-white py-16 px-6 lg:px-20" id="Mentorship_plans">
-  <h2 class="text-4xl font-extrabold text-center mb-12 text-gray-900 drop-shadow-md">
-    🎯 Choose Your 1:1 Mentorship Journey
-  </h2>
-
-  <div class="grid md:grid-cols-3 gap-10">
-    <!-- 1-Month Plan -->
-    <div class="rounded-2xl p-6 shadow-md border hover:scale-105 transform transition-all duration-300 bg-indigo-50 hover:shadow-indigo-200">
-      <h3 class="text-2xl font-bold text-center text-indigo-700 mb-2">💼 1 Month</h3>
-      <p class="text-center text-gray-800 mb-3 font-semibold">
-        <span class="bg-yellow-100 px-2 py-1 rounded">Resume + Interview Only</span>
-      </p>
-      <ul class="text-gray-800 text-base font-medium space-y-2 list-disc pl-5">
-        <li>🔹 ATS-Friendly Resume Creation</li>
-        <li>🔹 1:1 Mock Interviews & Feedback</li>
-        <li>🔹 LinkedIn Profile Optimization</li>
-        <li>🔹 Weekly Support for Doubts</li>
-      </ul>
-      <div class="text-center mt-6 text-sm text-gray-600 font-semibold italic">
-        <strong>Best for:</strong> Candidates who already have skills and need help converting them into offers.
-      </div>
-    </div>
-
-    <!-- 3-Month Plan (Most Popular) -->
-    <div class="rounded-2xl p-6 shadow-lg border-2 border-green-600 hover:scale-105 transform transition-all duration-300 bg-green-50 hover:shadow-green-200 relative">
-      <div class="absolute -top-4 right-4 bg-green-600 text-white text-xs px-3 py-1 rounded-full shadow-md font-semibold">
-        🔥 Most Popular
-      </div>
-      <h3 class="text-2xl font-bold text-center text-green-700 mb-2">🚀 3 Months</h3>
-      <p class="text-center text-gray-900 mb-3 font-semibold">
-        <span class="bg-green-100 px-2 py-1 rounded">Skill-Building + Projects + Job Search</span>
-      </p>
-      <ul class="text-gray-900 text-base font-medium space-y-2 list-disc pl-5">
-        <li>✅ Everything in 1-Month Plan</li>
-        <li>✅ Basic to Advanced: Excel, SQL, Python, Power BI</li>
-        <li>✅ 2–3 Real-World Projects (Guided)</li>
-        <li>✅ Resume + LinkedIn tailored for job role</li>
-        <li>✅ Strategic Job Search + Application Guidance</li>
-        <li>✅ Weekly Check-ins + Personalized Feedback</li>
-      </ul>
-      <div class="text-center mt-6 text-sm text-gray-700 font-semibold italic">
-        <strong>Best for:</strong> Learners who can commit 2–3 hrs/day and want a complete transformation.
-      </div>
-    </div>
-
-    <!-- 6-Month Plan -->
-    <div class="rounded-2xl p-6 shadow-md border hover:scale-105 transform transition-all duration-300 bg-blue-50 hover:shadow-blue-200">
-      <h3 class="text-2xl font-bold text-center text-blue-700 mb-2">🌱 6 Months</h3>
-      <p class="text-center text-gray-800 mb-3 font-semibold">
-        <span class="bg-yellow-100 px-2 py-1 rounded">Same as 3-Months — but Slow-Paced</span>
-      </p>
-      <ul class="text-gray-800 text-base font-medium space-y-2 list-disc pl-5">
-        <li>✅ Everything in 3-Month Plan</li>
-        <li>✅ Flexible Weekly Milestones</li>
-        <li>✅ Ideal for Working Professionals</li>
-        <li>✅ Monthly Progress Reviews</li>
-        <li>✅ Extra Time for Deep Mentorship</li>
-      </ul>
-      <div class="text-center mt-6 text-sm text-gray-600 font-semibold italic">
-        <strong>Best for:</strong> People balancing a full-time job or career switchers who need breathing room.
-      </div>
-    </div>
-  </div>
-
-  <!-- Note -->
-  <div class="mt-12 bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-xl text-base text-gray-800 shadow-sm font-medium">
-    <p><strong>📌 Note:</strong> The pace you choose depends on your daily availability & current skill level.</p>
-    <ul class="mt-2 list-disc pl-5 space-y-1">
-      <li><strong>1 Month:</strong> Already skilled? Just need help landing interviews.</li>
-      <li><strong>3 Months:</strong> Can invest 2–3 hrs/day? Learn fast and get job-ready.</li>
-      <li><strong>6 Months:</strong> Prefer slow, consistent progress? This one’s for you.</li>
-    </ul>
-  </div>
-</section>
-
-
-
-
-
-
- 
-        
-        
-        
- <section id="how_to_apply" class="py-20 bg-gradient-to-br from-[#f1f5f9] via-[#e7f0f9] to-[#f9f9fb]">
-  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-    <div class="rounded-3xl shadow-2xl bg-white/80 backdrop-blur-xl p-10 border border-emerald-200">
-      
-      <!-- 📝 Smaller Heading -->
-      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-center mb-8 
-        text-black drop-shadow-lg whitespace-nowrap">
-        📝 How to Apply for This Mentorship
-      </h2>
-
-      <div class="space-y-6 text-lg text-gray-800 font-medium leading-relaxed">
-        <p>● <strong class="text-gray-900">Step 1:</strong> Click the <strong class="text-black">Apply Button</strong> below to open the application form.</p>
-        
-        <p>● <strong class="text-gray-900">Step 2:</strong> Fill in your details carefully — this helps us understand your <em>background, goals, and timeline</em>.</p>
-        
-        <p>● <strong class="text-gray-900">Step 3:</strong> Within <strong class="text-gray-900">3–5 days</strong>, I’ll personally reach out to you via WhatsApp to guide your next steps.</p>
-      </div>
-
-    <p class="mt-8 text-lg font-semibold text-gray-900">
-  Want to start <span class="text-black font-bold">within 24 hours</span>?<br><br>
-  Follow the <span class="underline underline-offset-2 decoration-black">fast-track instructions</span> in the form.
-</p>
-
-
-      <!-- 🚀 Blue Navy Button -->
-      <div class="mt-10 text-center">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSefKydr62VSD5b5H42FpFMkXMoEWuit0sUYMVjsSUzwqfEQcA/viewform"
-          target="_blank"
-          class="inline-block px-8 py-4 text-lg font-bold text-white 
-          bg-gradient-to-r from-blue-800 via-blue-900 to-gray-900 
-          rounded-2xl shadow-xl hover:scale-105 hover:brightness-110 transition-all duration-300">
+        <!-- CTA -->
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSefKydr62VSD5b5H42FpFMkXMoEWuit0sUYMVjsSUzwqfEQcA/viewform" 
+           target="_blank" 
+           class="btn-primary fade-in d4">
           🚀 Apply for 1:1 Mentorship
         </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section id="how_it_works" class="py-20 bg-gradient-to-br from-[#d0dcf5] via-[#c5d3f2] to-[#dce4f9]">
-  <div class="mx-auto max-w-5xl px-6 sm:px-10">
-    
-    <!-- Title -->
-    <div class="text-left mb-14">
-      <h2 class="text-4xl sm:text-5xl font-extrabold text-[#1b2a4e] tracking-tight drop-shadow-md">
-        Day 1 of Mentorship & General Guidelines
-      </h2>
-      <p class="mt-4 text-lg sm:text-xl text-[#2c3e60] font-medium leading-relaxed max-w-3xl">
-        Your journey starts with a <span class="text-[#1b2a4e] font-semibold">personalized roadmap</span>. The mentorship is broken into 
-        <span class="text-[#1b2a4e] font-semibold">28–30 milestones</span>, and on Day 1, you’ll be given 
-        <span class="text-[#1b2a4e] font-semibold">2–3 core tasks</span> — including videos, tools, and exclusive material — to begin your growth.
-      </p>
-    </div>
-<!-- Steps Grid -->
-<div class="grid gap-8 sm:grid-cols-1 md:grid-cols-3">
-  
-  <!-- Step 1 -->
-  <div class="bg-[#e3ebf7] border border-[#ccd9ef] rounded-2xl p-6 shadow-md transition-all duration-300 hover:shadow-blue-200">
-    <div class="flex items-center justify-center h-12 w-12 rounded-xl bg-gradient-to-tr from-blue-500 to-indigo-500 text-white font-bold text-lg mb-4">
-      1
-    </div>
-    <h3 class="text-xl font-semibold text-[#1b2a4e] mb-2">🎯 Deadlines Keep You Sharp</h3>
-    <p class="text-[#445471] text-sm leading-relaxed">
-      Every goal has a clear deadline. Whether it's a CV, project, or mock interview — <span class="font-semibold text-[#1b2a4e]">you’ll always know what’s due and when</span>. No confusion. No delays. Just pure momentum.
-    </p>
-  </div>
-  
-  <!-- Step 2 -->
-  <div class="bg-[#e3ebf7] border border-[#ccd9ef] rounded-2xl p-6 shadow-md transition-all duration-300 hover:shadow-blue-200">
-    <div class="flex items-center justify-center h-12 w-12 rounded-xl bg-gradient-to-tr from-blue-500 to-indigo-500 text-white font-bold text-lg mb-4">
-      2
-    </div>
-    <h3 class="text-xl font-semibold text-[#1b2a4e] mb-2">📅 Quick Daily Check-Ins</h3>
-    <p class="text-[#445471] text-sm leading-relaxed">
-      10 seconds a day. That’s all it takes. Share a simple update like <span class="italic text-[#1b2a4e]">“Watched SQL tutorial”</span> or <span class="italic text-[#1b2a4e]">“Stuck on joins”</span>. It’s about <span class="font-semibold text-[#1b2a4e]">staying accountable and visible</span>.
-    </p>
-  </div>
-  
-  <!-- Step 3 -->
-  <div class="bg-[#e3ebf7] border border-[#ccd9ef] rounded-2xl p-6 shadow-md transition-all duration-300 hover:shadow-blue-200">
-    <div class="flex items-center justify-center h-12 w-12 rounded-xl bg-gradient-to-tr from-blue-500 to-indigo-500 text-white font-bold text-lg mb-4">
-      3
-    </div>
-    <h3 class="text-xl font-semibold text-[#1b2a4e] mb-2">💬 Instant WhatsApp Support</h3>
-    <p class="text-[#445471] text-sm leading-relaxed">
-      Doubts? Frustrated? Lost? <span class="font-semibold text-[#1b2a4e]">Drop a message, anytime</span>. Whether it’s career direction or debugging code — you’re never stuck alone.
-    </p>
-  </div>
-</div>
-
-
-    </div>
-  </div>
-</section>    
-        
-<section id="results" class="py-16 sm:py-24 bg-[#1e293b]">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-blue-400 via-white to-blue-500 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(96,165,250,0.5)]">
-      1:1 Mentorship Results
-    </h2>
-    
-    <div class="mt-12 text-left">
-      <ul class="space-y-4 text-base md:text-lg leading-relaxed list-disc list-inside text-gray-200">
-        <li><strong>Global Reach:</strong> Students placed in 8 countries – 🇮🇳 India, 🇺🇸 USA, 🇨🇦 Canada, 🇬🇧 UK, 🇦🇪 UAE, 🇦🇺 Australia, 🇩🇪 Germany, 🇮🇪 Ireland ETC.</li>
-        
-        <li><strong>100+ Mentees Placed Globally:</strong> Personally guided freshers, professionals & career switchers</li>
-        
-        <li><strong>25+ Freshers Placed:</strong> Landed DA roles in 3–5 months with salaries ₹3–12 LPA</li>
-        
-        <li><strong>30+ Experienced Professionals:</strong> Switched to top product companies with 30–187% salary hikes (₹5–15 LPA → ₹15–30 LPA)</li>
-        
-        <li><strong>20+ Career Restarts:</strong> Candidates with 6 months to 5 years gap placed at ₹8–14 LPA roles</li>
-        
-        <li><strong>15+ Domain Switchers:</strong> Transitioned from HR, Testing, Support to Analytics roles (₹7–16 LPA)</li>
-        
-        <li><strong>Country-wise Global Placements:</strong>
-          <ul class="pl-5 mt-1 space-y-1 list-disc text-sm text-gray-300">
-            <li>🇺🇸 USA: 5 Placed ($90K–$125K)</li>
-            <li>🇨🇦 Canada: 4 Placed (CAD 70K–110K)</li>
-            <li>🇬🇧 UK: 3 Placed (£45K–80K)</li>
-            <li>🇦🇪 UAE: 2 Placed (AED 180K–240K)</li>
-            <li>🇦🇺 Australia: 2 Placed (AUD 90K–110K)</li>
-            <li>🇩🇪 Germany: 3 Placed (€60K–85K)</li>
-            <li>🇮🇪 Ireland: 2 Placed (€55K–75K)</li>
-          </ul>
-        </li>
-        
-        <li><strong>Avg. Placement Time:</strong> 3–6 months, with 22% placed within just 90 days</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-
-
-
-
-
-
-
-<!-- Video Testimonials: Horizontal Scrollable -->
-<section id="video-testimonials" class="py-16 sm:py-24 bg-[#1e293b]">
-  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-<section class="bg-[#1e293b] py-12 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-4xl mx-auto text-center">
-    <h2 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight drop-shadow-md">
-      🎥 What Our Mentees Say
-    </h2>
-
-<div class="text-left mt-4">
-  <p class="text-lg text-white">
-    Watch how my mentees from diverse backgrounds broke into high-impact data roles.
-  </p>
-
-  <p class="mt-4 text-lg text-white">
-    From Freshers to Professionals making bold career pivots, these stories prove what’s possible with the right guidance.
-  </p>
-</div>
-
-  </div>
-</section>
-
-
-    <div class="relative">
-      <!-- Prev Button -->
-      <button onclick="scrollVideos(-1)" class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full">
-        &#8592;
-      </button>
-
-      <!-- Scrollable Video Container -->
-      <div id="videoContainer" class="flex space-x-6 overflow-x-auto scroll-smooth no-scrollbar pb-4">
-        <!-- Video 1 -->
-<div class="min-w-[320px] max-w-[320px] aspect-video rounded-lg overflow-hidden shadow-lg">
-  <iframe class="w-full h-full"
-    src="https://www.youtube.com/embed/FOmajRoPHtI"
-    title="Testimonial Video 1"
-    frameborder="0" allowfullscreen></iframe>
-</div>
-
-<!-- Video 2 -->
-<div class="min-w-[320px] max-w-[320px] aspect-video rounded-lg overflow-hidden shadow-lg">
-  <iframe class="w-full h-full"
-    src="https://www.youtube.com/embed/DO-YZsDdJZE"
-    title="Testimonial Video 2"
-    frameborder="0" allowfullscreen></iframe>
-</div>
-
-<!-- Video 3 -->
-<div class="min-w-[320px] max-w-[320px] aspect-video rounded-lg overflow-hidden shadow-lg">
-  <iframe class="w-full h-full"
-    src="https://www.youtube.com/embed/iQ-xp1YLTTo"
-    title="Testimonial Video 3"
-    frameborder="0" allowfullscreen></iframe>
-</div>
-
-<!-- Video 4 -->
-<div class="min-w-[320px] max-w-[320px] aspect-video rounded-lg overflow-hidden shadow-lg">
-  <iframe class="w-full h-full"
-    src="https://www.youtube.com/embed/UZm8zFfPnqQ"
-    title="Testimonial Video 4"
-    frameborder="0" allowfullscreen></iframe>
-</div>
-
-<!-- Video 5 -->
-<div class="min-w-[320px] max-w-[320px] aspect-video rounded-lg overflow-hidden shadow-lg">
-  <iframe class="w-full h-full"
-    src="https://www.youtube.com/embed/Xot-UVT-Cqk"
-    title="Testimonial Video 5"
-    frameborder="0" allowfullscreen></iframe>
-</div>
-
-<!-- Video 6 -->
-<div class="min-w-[320px] max-w-[320px] aspect-video rounded-lg overflow-hidden shadow-lg">
-  <iframe class="w-full h-full"
-    src="https://www.youtube.com/embed/yXtqiDyIdMU"
-    title="Testimonial Video 6"
-    frameborder="0" allowfullscreen></iframe>
-</div>
-
-<!-- Video 7 -->
-<div class="min-w-[320px] max-w-[320px] aspect-video rounded-lg overflow-hidden shadow-lg">
-  <iframe class="w-full h-full"
-    src="https://www.youtube.com/embed/0kmFBBvVSXo"
-    title="Testimonial Video 7"
-    frameborder="0" allowfullscreen></iframe>
-</div>
-
-<!-- Video 8 -->
-<div class="min-w-[320px] max-w-[320px] aspect-video rounded-lg overflow-hidden shadow-lg">
-  <iframe class="w-full h-full"
-    src="https://www.youtube.com/embed/cMtNLa-_WQI"
-    title="Testimonial Video 8"
-    frameborder="0" allowfullscreen></iframe>
-</div>
-
-<!-- Video 9 -->
-<div class="min-w-[320px] max-w-[320px] aspect-video rounded-lg overflow-hidden shadow-lg">
-  <iframe class="w-full h-full"
-    src="https://www.youtube.com/embed/68PENIUAwxM"
-    title="Testimonial Video 9"
-    frameborder="0" allowfullscreen></iframe>
-</div>
-
-<!-- Video 10 -->
-<div class="min-w-[320px] max-w-[320px] aspect-video rounded-lg overflow-hidden shadow-lg">
-  <iframe class="w-full h-full"
-    src="https://www.youtube.com/embed/SolxUsiDdno"
-    title="Testimonial Video 10"
-    frameborder="0" allowfullscreen></iframe>
-</div>
 
       </div>
 
-      <!-- Next Button -->
-      <button onclick="scrollVideos(1)" class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full">
-        &#8594;
-      </button>
+      <!-- RIGHT PROFILE -->
+      <div class="hero-profile fade-in d3" style="text-align:left; margin-left:20px;">
+
+        <img src="https://topmate-staging.s3.amazonaws.com/9NQoYHEJu9apWSS5kdpZmK.png" alt="Mazher Khan">
+
+        <div class="profile-name" style="
+          font-size:40px;
+          font-weight:700;
+          margin-top:12px;
+        ">
+          Mazher Khan
+        </div>
+
+        <div class="profile-title" style="
+          font-size:16px;
+          color:var(--text);
+          margin-top:4px;
+        ">
+	(8 Years in Data Science & Analytics)
+        </div>
+
+        <div class="profile-flags" style="
+          margin-top:10px;
+          font-size:15px;
+          color:var(--text);
+          line-height:2.2;
+        ">
+
+
+		<div>🏆 <strong>TEDx Speaker · Best Data Creator Award</strong></div>
+
+		<div>⭐ <strong>30 Under 30 International</strong></div>
+
+         <div>🌍 <strong>Placed 300+ Students  Globally</strong></div>
+
+<div> 🇮🇳 India · 🇺🇸 USA · 🇬🇧 UK · 🇨🇦 Canada · 🇮🇪 Ireland · 🇩🇪 Germany · 🇦🇺 Australia · 🇦🇪 UAE
+</div>
+
+        </div>
+
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- Scroll Script -->
-<script>
-  function scrollVideos(direction) {
-    const container = document.getElementById('videoContainer');
-    const scrollAmount = 340;
-    container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
-  }
-</script>
+     <div class="divider"></div>
 
-<!-- Hide scrollbar -->
+
+<!-- ── RESULTS ── -->
+<section id="results" class="section section-pad">
+  <div class="container">
+    <h2 class="display" style="font-size:clamp(32px,5vw,52px);margin-bottom:14px;">Real results, <em style="font-style:italic;color:var(--accent);">real careers.</em></h2>
+    <p style="font-size:16px;color:white;font-weight:300;margin-bottom:48px;max-width:520px;">Tracked outcomes across 300+ mentees over 2 years of 1:1 Mentorship.</p>
+
+    
+<div class="stats-grid">
+
+  <!-- 🔥 CORE IMPACT FIRST -->
+  <div class="stat-cell">
+    <div class="stat-num">94<sup>%</sup></div>
+    <div class="stat-label">Placed in a new role within 3–5 months</div>
+    <span class="stat-badge badge-green">Industry-leading</span>
+  </div>
+
+  <div class="stat-cell">
+    <div class="stat-num">60 <span class="unit">days</span></div>
+    <div class="stat-label">Average time to become interview-ready</div>
+  </div>
+
+  <div class="stat-cell">
+    <div class="stat-num">1.2<span class="unit">×</span></div>
+    <div class="stat-label">Average offers received per mentee</div>
+  </div>
+
+  <div class="stat-cell">
+    <div class="stat-num">321<sup>+</sup></div>
+    <div class="stat-label">Total job offers generated across all mentees</div>
+    <span class="stat-badge badge-purple">And counting</span>
+  </div>
+
+  <!-- 🧠 TRUST + SOCIAL PROOF -->
+  <div class="stat-cell">
+    <div class="stat-num">98<sup>%</sup></div>
+    <div class="stat-label">Mentees who'd refer a friend without hesitation</div>
+    <span class="stat-badge badge-green">Near perfect</span>
+  </div>
+
+  <div class="stat-cell">
+    <div class="stat-num">4.9<span class="unit">/5</span></div>
+    <div class="stat-label">Average mentor satisfaction score</div>
+  </div>
+
+  <div class="stat-cell">
+    <div class="stat-num">92<sup>%</sup></div>
+    <div class="stat-label">Program completion rate</div>
+  </div>
+
+  <!-- 💰 VALUE / GROWTH -->
+  <div class="stat-cell">
+    <div class="stat-num">1.8<span class="unit">×</span></div>
+    <div class="stat-label">Average salary increase vs prior role</div>
+    <span class="stat-badge badge-green">Post-placement</span>
+  </div>
+
+  <!-- 🔥 NEW METRICS (LAST) -->
+  <div class="stat-cell">
+    <div class="stat-num">82<sup>%</sup></div>
+    <div class="stat-label">
+      Successful career transitions into analytics roles
+    </div>
+    <span class="stat-badge badge-green">From non-tech backgrounds</span>
+  </div>
+
+  <div class="stat-cell">
+    <div class="stat-num">69<sup>%</sup></div>
+    <div class="stat-label">Interview-to-offer conversion rate</div>
+    <span class="stat-badge badge-green">Above industry average</span>
+  </div>
+</div>
+  
+
+
+<section id="results" class="section section-pad">
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <h2 style="font-size:clamp(32px,5vw,52px);margin-bottom:14px;color:white;">
+      Real results, <span style="color:#3b82f6;">real careers.</span>
+    </h2>
+
+    <p style="font-size:16px;color:white;margin-bottom:40px;max-width:520px;">
+      Tracked outcomes across 300+ mentees over 2 years of 1:1 Mentorship.
+    </p>
+
+    <!-- STATS GRID -->
+    <div class="stats-grid">
+
+      <div class="stat-cell">
+        <div class="stat-num">94%</div>
+        <div class="stat-label">Placed in 3–5 months</div>
+      </div>
+
+      <div class="stat-cell">
+        <div class="stat-num">60 days</div>
+        <div class="stat-label">Interview-ready time</div>
+      </div>
+
+      <div class="stat-cell">
+        <div class="stat-num">1.2×</div>
+        <div class="stat-label">Offers per mentee</div>
+      </div>
+
+      <div class="stat-cell">
+        <div class="stat-num">321+</div>
+        <div class="stat-label">Total offers</div>
+      </div>
+
+      <div class="stat-cell">
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Would refer</div>
+      </div>
+
+      <div class="stat-cell">
+        <div class="stat-num">4.9/5</div>
+        <div class="stat-label">Satisfaction score</div>
+      </div>
+
+      <div class="stat-cell">
+        <div class="stat-num">92%</div>
+        <div class="stat-label">Completion rate</div>
+      </div>
+
+      <div class="stat-cell">
+        <div class="stat-num">1.8×</div>
+        <div class="stat-label">Salary growth</div>
+      </div>
+
+    </div>
+
+    <!-- HIGHLIGHTS -->
+        <div class="highlights">
+      <div class="hl-card hl-gold">
+        <div class="hl-label">Highest salary offer</div>
+        <div class="hl-value">₹55 LPA</div>
+        <div class="hl-sub">Lead Data Analyst · Remote (UK) - Fable Data</div>
+      </div>
+      <div class="hl-card hl-teal">
+        <div class="hl-label">Global placements</div>
+        <div class="hl-value">8 <span style="font-family:var(--font-body);font-size:18px;font-weight:300;">countries</span></div>
+        <div class="hl-sub">India · USA · UK · Canada · UAE · Australia · Germany · Ireland</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div style="color:rgba(255,255,255,0.95);font-size:24px;font-weight:700;">
+  Country-wise Global Salaries
+</div>
+        
+        <div class="country-sub">
+          <!-- Wrapper -->
+<div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:16px;">
+
+  <span class="country-chip">🇮🇳 India ₹5LPA–₹55LPA</span>
+  <span class="country-chip">🇺🇸 USA $90K–$125K</span>
+  <span class="country-chip">🇨🇦 Canada CAD 70K–110K</span>
+  <span class="country-chip">🇬🇧 UK £45K–80K</span>
+  <span class="country-chip">🇦🇪 UAE AED 180K–240K</span>
+  <span class="country-chip">🇦🇺 Australia AUD 90K–110K</span>
+  <span class="country-chip">🇩🇪 Germany €60K–85K</span>
+  <span class="country-chip">🇮🇪 Ireland €55K–75K</span>
+
+</div>
+
+<!-- Styles -->
 <style>
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
+.country-chip {
+  display: inline-block;
+  font-size: 16px;          /* bigger text */
+  padding: 10px 16px;       /* more space inside */
+  border-radius: 24px;      /* rounded pill shape */
+  background: #1e293b;      /* dark background */
+  color: #ffffff;           /* white text */
+  font-weight: 600;         /* bold */
+  transition: all 0.3s ease;
+}
 
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+/* 🔥 Optional hover effect (premium feel) */
+.country-chip:hover {
+  background: #3b82f6;
+  transform: translateY(-2px);
+}
 </style>
+        </div>
+      </li>
+    </ul>
 
+    <div class="divider"></div>
+    <div style="color:rgba(255,255,255,0.95);font-size:24px;font-weight:700;">
+  Companies where mentees were placed
+</div>
+    <div class="badge-grid">
+<!-- Wrapper -->
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">
 
+  <div class="company-badge">Deloitte</div>
+  <div class="company-badge">EY</div>
+  <div class="company-badge">Goldman Sachs</div>
+  <div class="company-badge">Expedia</div>
 
+  <div class="company-badge">Salesforce</div>
 
-<section id="text-testimonials" class="py-16 sm:py-24 bg-[#1e293b] relative">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <div class="company-badge">Publicis Sapient</div>
+  <div class="company-badge">Accenture</div>
+  <div class="company-badge">Capgemini</div>
+  <div class="company-badge">Cognizant</div>
 
-    <!-- Title -->
-    <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white text-center mb-12">
-      🌍 What Mentees Say
-    </h2>
+  <div class="company-badge">Samsung</div>
+  <div class="company-badge">Mastercard</div>
+  <div class="company-badge">American Express</div>
+  <div class="company-badge">Paytm</div>
 
-    <!-- Scroll Buttons -->
-    <div class="absolute inset-y-0 left-4 flex items-center z-10">
-      <button onclick="scrollTestimonials(-1)" class="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full shadow">
-        &#8592;
-      </button>
-    </div>
-    <div class="absolute inset-y-0 right-4 flex items-center z-10">
-      <button onclick="scrollTestimonials(1)" class="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full shadow">
-        &#8594;
-      </button>
-    </div>
+  <div class="company-badge">Walmart</div>
+  <div class="company-badge">Flipkart</div>
+  <div class="company-badge">Swiggy</div>
+  <div class="company-badge">Zomato</div>
+  <div class="company-badge">Uber</div>
 
-    <!-- Testimonials Row -->
-    <div id="testimonialRow" class="flex gap-6 overflow-x-auto scroll-smooth no-scrollbar pb-4 snap-x snap-mandatory">
-      
-      <!-- Example Testimonial Cards -->
-      <!-- You can loop this from JS for 50+ -->
- 
- <div class="testimonial-card snap-start">Choosing Mazher as my mentor has been one of the best decisions I’ve made. He has been consistently supportive throughout the process, right from the beginning. His guidance in mapping out my entire career advancement roadmap, along with regular check-ins and prompt resolution of any doubts or issues, has been invaluable. One of the standout aspects of working with Mazher is his flexibility and constant availability, whether it was adjusting schedules, reviewing resumes/scripts or final tips before the interview process, he was always there, ensuring I had the support I needed. I highly recommend Mazher to anyone looking to upskill or advance their career. <span>—Ashwin SahgalPune, IND 🇮🇳</div>
-<div class="testimonial-card snap-start">I feel incredibly fortunate to have had Mazher as my mentor. His guidance, patience, and deep knowledge have played a crucial role in my personal and professional growth. He always took the time to understand my challenges and offered thoughtful, practical advice that made a real difference. Mazher’s ability to inspire and bring out the best in others is truly remarkable. He leads by example, demonstrating integrity, dedication, and a genuine passion for helping others succeed. His encouragement gave me the confidence to push beyond my limits. <span>—Vartika SinghSacramento, USA 🇺🇸</div>
-<div class="testimonial-card snap-start">Joining 1:1 Mentorship with Mazher was a game-changer for my career. His personalized guidance, detailed mock interviews, and deep industry insights were invaluable. His constant support and practical advice helped me build confidence and resilience. His dedication to my success was evident in every session, making complex concepts easy to understand and job market navigation seamless. I highly recommend Mentor Mazher to anyone seeking to advance their career. <span>—Priyal SavlaLondon, UK 🇬🇧</div>
-<div class="testimonial-card snap-start">Mazher is a great mentor who provides keen insights into areas of improvement. He consistently encourages us to aim high and never settle. His practical use cases and guidance prepare us thoroughly for interviews. He’s proactive, reliable, and always shows up. His support has helped me grow with clarity and confidence. Truly a valuable mentor for long-term success.<span>—Chirag RathodBrampton, CAN 🇨🇦</div>
-<div class="testimonial-card snap-start">My mentor Mazher was always there when I needed help, whether it was during our sessions or when I dropped a quick message. They explained things in a way that made sense, even the tricky stuff, and they were cool about adjusting how they explained things to match how I learned best. They really know their stuff! It was like having a walking encyclopedia of the subject right there with me. Plus, they were super chill and supportive, which made asking questions or trying new things feel natural and not intimidating at all. Overall, I'd give them a solid 5 out of 5. They made learning enjoyable and helped me grow a ton in the skills we worked on.<span>—Akshaansh GautamDublin, IRL 🇮🇪</div>
-<div class="testimonial-card snap-start">I want to thank Mazher Khan for his guidance, support, and mentorship throughout the journey. We could reach out to him anytime for clarity, and he was always there to help. The personalized learning plan and consistent encouragement pushed me to keep building my technical skills. His feedback is always actionable, and his belief in our growth truly motivates us. It’s been a transformative experience.<span>—Vinay mamillapalliHyderabad, IND 🇮🇳</div>
-<div class="testimonial-card snap-start">Before mentorship programs , I faced a long career gap and lacked confidence in my skills , I struggled with self doubt . After this program , I regained my confidence and developed interest in learning . The guidance and support helped me to stay motivated .<span>—Ravneet kaurLondon, UK 🇬🇧</div>
-<div class="testimonial-card snap-start">My mentor Mazher has been consistently available and accessible, offering timely support and scheduling regular meetings. Their communication skills effectively convey complex concepts and foster open dialogue. With deep expertise in the subject matter, they provide valuable insights and practical knowledge. Their mentoring style is supportive and empowering, encouraging growth and independence while offering guidance as needed.<span>—Ankita ChoudhuryBengaluru, IND 🇮🇳</div>
-<div class="testimonial-card snap-start">Before the mentorship, I was struggling with a lack of direction in my career path and often felt overwhelmed about where to focus my efforts—whether in learning, job preparation, or choosing the right opportunities.  This program helped me gain clarity and structure. Regular check-ins and guidance from my mentor helped me prioritize better, stay accountable, and focus on the skills that actually matter. I now feel more confident and motivated to move forward.<span>—Saru MagarSydney, AUS 🇦🇺</div>
-<div class="testimonial-card snap-start">Mazher Khan helped me figure out the right path to land a job. He assessed where I stood, then guided me through focused sessions, mock interviews, and job search strategies. His practical insights and structured approach made a huge difference. What stood out was his patience, genuine care, and ability to simplify tough decisions. I’m truly thankful for his guidance during this crucial phase of my life.<span>—Uditi ChaudharyNoida, IND 🇮🇳</div>
-<div class="testimonial-card snap-start">Enrolling in the Mentorship program and getting mentored by Mazher has been transformative for my career. From the start, my mentor provided personalized, insightful guidance that significantly boosted my confidence and skills. His mock interviews were invaluable, offering practical feedback that refined my responses and presentation. What truly sets Mazher apart is his genuine commitment to my success. His motivational style kept me focused and driven, helping me build resilience and perseverance. Thanks to his mentorship, I feel much better prepared and confident while interviewing, specially in big-tech. <span>—SubairaDubai, UAE 🇦🇪</div>
-<div class="testimonial-card snap-start">Mazher Khan’s mentorship was a game-changer for me. What truly made the difference was how he prepared me for real-world interviews—not by giving answers, but by teaching me how to think critically. His training covered practical case studies and domain-specific scenarios across industries like retail, finance, and HR, which made me feel prepared for anything. Beyond technical prep, he offered genuine insights on long-term career growth, and even guided me during my job offer negotiations. I’m incredibly grateful for his support—it’s been a transformative experience<span>—Anil Singh RawatNew Delhi, IND 🇮🇳</div>
-<div class="testimonial-card snap-start">I was struggling to crack interviews while looking for a job change in analytics. That’s when I found Mazher Khan through the Long Term Mentorship Program. He guided me through SQL, dashboard tools, and real interview prep. But more than that, he was a steady source of motivation during a tough phase. With his support, I’ve now joined an MNC’s analytics team, and I couldn’t be more grateful.<span>—Pranay Anil TalwareBengaluru, IND 🇮🇳</div>
-<div class="testimonial-card snap-start">Mazher Khan brings deep experience in the analytics field, and his mentorship made a huge impact on my growth. He was always patient and approachable, guiding me through complex queries and real business scenarios. His way of teaching helped me build both confidence and practical skills. Thanks to his support, I now approach analytics problems with much more clarity. I highly recommend his mentorship to anyone aiming to grow or transition in this space.<span>—Abinisha ArunagiriSanta Clara, USA 🇺🇸</div>
-<div class="testimonial-card snap-start">Mazher Khan is an outstanding mentor with deep industry experience across both consulting and product domains. His practical insights and hands-on guidance helped me navigate challenges with clarity and confidence. What sets him apart is his ability to blend real-world experience with personalized support. Every session felt purposeful, and his dedication to helping others grow is truly inspiring. He’s not just a mentor — he’s a career catalyst.<span>—Sravani PillaMaryland, USA 🇺🇸</div>
-<div class="testimonial-card snap-start">As a mentor, Mazher Khan is highly skilled in his teaching style. He quickly grasps his mentees' strengths and weaknesses, crafting an impressive roadmap that is essential for their success. His consistent availability and deep expertise in the subject make learning much easier, complemented by his perfect layman's approach to solving any problem.<span>—Armash kaziRatnagiri, IND 🇮🇳</div>
-<div class="testimonial-card snap-start">I have had the pleasure of being mentored by Mazher, and I can confidently say that he is exceptionally knowledgeable and supportive. Despite being in different time zones, Mazher has always been incredibly accommodating and willing to go the extra mile to assist. His dedication and willingness to help have positively impacted my growth and development. I highly recommend Mazher to anyone seeking a reliable and skilled mentor.<span>—Ashima SharmaEdmonton, CAN 🇨🇦</div>
-<div class="testimonial-card snap-start">I joined Mazher Khan’s mentorship program to prepare for a career transition with limited prior experience. His guidance made the entire process smoother and more structured. From sharing curated resources and certifications to offering tailored interview tips, he helped me build confidence step by step. His depth of knowledge across business and tech domains is remarkable. This was more than just a short-term prep—it’s been an investment in a lifelong mentor.<span>—Rayyan MohammedMonroe, USA 🇺🇸</div>
-<div class="testimonial-card snap-start">Mazher Khan was an invaluable mentor during my job search journey. His deep industry knowledge and practical advice helped me refine my resume, LinkedIn profile, and interview approach. He was always available, offering timely feedback and thoughtful guidance. His calm and encouraging presence kept me motivated and confident through the ups and downs. Thanks to his support, I secured a great role and feel much better prepared for future challenges. I highly recommend Mazher to anyone seeking focused career mentorship and lasting clarity.<span>—Harshitha TBangalore, IND 🇮🇳</div>
-<div class="testimonial-card snap-start">I feel truly fortunate to be mentored by Mazher Khan. Every session with him brings a wave of positivity and renewed confidence. He pushes me beyond my comfort zone while always reminding me that I can achieve more. With his support, I know I’m getting back on track and closer to my goals.<span>—Rohan MengdeDüsseldorf, DEU 🇩🇪</div>
-<div class="testimonial-card snap-start">Being mentored by Mazher Khan has been a transformative experience. From our very first session, he understood my goals and helped shape a clear path forward. His industry insights, practical strategies, and unwavering support have helped me grow both professionally and personally.<span>—Roshni VoraDubai, UAE 🇦🇪</div>
-<div class="testimonial-card snap-start">Mazher Khan helped me map out a personalized career roadmap and identify the key skills I needed to work on. His sessions are always focused, motivating, and full of real-world relevance. Whether it’s making critical decisions or building momentum, his mentorship has been instrumental.Mazher Khan’s mentorship goes beyond just technical teaching—he creates a supportive and engaging learning environment. He simplifies complex topics, adapts to your learning style, and genuinely cares about your success. With his help, I feel more confident about taking big steps in my career.<span>—Bishnu KhanalDarwin, AUS 🇦🇺</div>
-<div class="testimonial-card snap-start">Mazher Khan’s structured approach brought much-needed clarity to my interview preparation. His constant guidance, accountability, and insightful feedback gave my career journey a clear direction. It’s rare to find a mentor so invested in your growth—his consistency, deep technical understanding, and encouragement made all the difference. I genuinely looked forward to every session because of the practical advice and positivity he brought. I feel far more confident now in interviews and beyond.<span>—Sai Krishna BharadwajHyderabad, IND 🇮🇳</div>
-<div class="testimonial-card snap-start">Mazher Khan is an outstanding mentor who brings clarity, confidence, and consistency to the learning process. From the first session, he was deeply engaged and always approachable. He explained complex backend concepts and industry-relevant topics with such simplicity that even tough subjects became easy to understand. His sessions were well-structured, motivating, and helped me plan and execute my career goals better. I now feel prepared to aim for top tech and product-based roles.<span>—M SHAKEER HUSSAINBangalore, IND 🇮🇳</div>
-<div class="testimonial-card snap-start">I'm incredibly grateful to Mazher Khan for guiding me through my Data Structures and Algorithms (DSA) journey. His ability to simplify challenging topics, create a clear roadmap, and instill confidence is unmatched. More than just technical knowledge, he taught me how to stay consistent, solve problems methodically, and stay positive under pressure. Every session added value and pushed me one step closer to my goals. I owe much of my interview success to his constant support and structured mentorship.<span>—Shaik MohammedSan Antonio, USA 🇺🇸</div>
-<div class="testimonial-card snap-start">I sincerely appreciate Mazher Khan’s exceptional mentorship during my pre-placement journey. His expertise in analytics and backend development, combined with his ability to share actionable insights, made a significant impact on my preparation. His feedback was always timely, honest, and constructive. He not only helped me improve technically but also boosted my self-confidence. Thanks to him, I feel ready to face professional challenges and take confident steps in my career growth.<span>—Revathi Datla(mudunuri)Munich, DEU 🇩🇪</div>
-<div class="testimonial-card snap-start">Mazher Khan is an excellent mentor who ensures that you stay focused and make steady progress. He regularly checks in with practical advice and thoughtful suggestions tailored to your journey. His structured mentoring helped me stay on track during uncertain phases and brought a sense of accountability I truly needed. With his support, I’ve made real improvements in my preparation. I’m very satisfied with his mentorship and would absolutely recommend him to anyone seeking clarity and direction.<span>—RajeshHelsinki, FIN 🇫🇮 (added)</div>
-     
-      
-      <!-- Repeat like above for all 50 -->
+  <div class="company-badge">Fractal Analytics</div>
+  <div class="company-badge">Mu Sigma</div>
+  <div class="company-badge">Tiger Analytics</div>
+
+  <div class="company-badge">Airtel</div>
+  <div class="company-badge">Jio</div>
+
+  <div class="company-badge">Lululemon</div>
+  <div class="company-badge">United Airlines</div>
+  <div class="company-badge">Noon</div>
+
+  <div class="company-badge">Zypp</div>
+  <div class="company-badge">Blend</div>
+  <div class="company-badge">Razorpay</div>
+  <div class="company-badge">PhonePe</div>
+
+  <div class="company-badge">Dish TV</div>
+  <div class="company-badge">TaskUs</div>
+
+</div>
+
+<!-- Styles -->
+<style>
+.company-badge {
+  font-size: 13px;           /* smaller than country chips */
+  padding: 6px 10px;         /* tighter */
+  border-radius: 16px;
+  background: #334155;       /* slightly lighter than chips */
+  color: #e2e8f0;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+/* subtle hover */
+.company-badge:hover {
+  background: #3b82f6;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+</style>
     </div>
   </div>
-
-  <!-- Scroll Script -->
-  <script>
-    function scrollTestimonials(direction) {
-      const container = document.getElementById('testimonialRow');
-      const cardWidth = 340; // Adjust if padding/margin changes
-      container.scrollBy({ left: direction * cardWidth * 3, behavior: 'smooth' });
-    }
-  </script>
-
-  <!-- Styles -->
-  <style>
-    .testimonial-card {
-      min-width: 320px;
-      max-width: 320px;
-      height: 600px;
-      background-color: #ffffff;
-      border: px solid #FFD700;
-      border-radius: 1rem;
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      color: #111827;
-      font-weight: 600;
-      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
-      overflow-wrap: break-word;
-    }
-
-    .testimonial-card span {
-   font-size: 0.875rem;
-  color: #1e3a8a;         /* optional: dark blue for accent */
-  font-weight: 700;       /* bold */
-  font-style: normal;
-  margin-top: 1rem;
-    }
-
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-  </style>
 </section>
 
+<!-- ── VIDEO TESTIMONIALS ── -->
+<section id="video-testimonials" class="section section-pad" style="background:var(--surface);">
+  <div class="container">
+
+    <h2 class="display" style="font-size:clamp(28px,4vw,44px);margin-bottom:10px;">What our <em style="font-style:italic;color:var(--accent2);">mentees say</em></h2>
+    <p style="font-size:18px;color:white;margin-bottom:40px;max-width:500px;">From freshers to career-pivoters — watch their journeys into high-impact data roles.</p>
+    <div class="video-scroll-wrap">
+      <button class="video-scroll-btn prev" onclick="document.getElementById('videoGrid').scrollBy({left:-320,behavior:'smooth'})">&#8592;</button>
+      <div class="video-grid" id="videoGrid">
+        <div class="video-card"><iframe src="https://www.youtube.com/embed/FOmajRoPHtI" allowfullscreen></iframe></div>
+        <div class="video-card"><iframe src="https://www.youtube.com/embed/DO-YZsDdJZE" allowfullscreen></iframe></div>
+        <div class="video-card"><iframe src="https://www.youtube.com/embed/iQ-xp1YLTTo" allowfullscreen></iframe></div>
+        <div class="video-card"><iframe src="https://www.youtube.com/embed/UZm8zFfPnqQ" allowfullscreen></iframe></div>
+        <div class="video-card"><iframe src="https://www.youtube.com/embed/Xot-UVT-Cqk" allowfullscreen></iframe></div>
+        <div class="video-card"><iframe src="https://www.youtube.com/embed/yXtqiDyIdMU" allowfullscreen></iframe></div>
+        <div class="video-card"><iframe src="https://www.youtube.com/embed/0kmFBBvVSXo" allowfullscreen></iframe></div>
+        <div class="video-card"><iframe src="https://www.youtube.com/embed/cMtNLa-_WQI" allowfullscreen></iframe></div>
+        <div class="video-card"><iframe src="https://www.youtube.com/embed/68PENIUAwxM" allowfullscreen></iframe></div>
+        <div class="video-card"><iframe src="https://www.youtube.com/embed/SolxUsiDdno" allowfullscreen></iframe></div>
+      </div>
+      <button class="video-scroll-btn next" onclick="document.getElementById('videoGrid').scrollBy({left:320,behavior:'smooth'})">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── TEXT TESTIMONIALS ── -->
+<section id="text-testimonials" class="section section-pad">
+  <div class="container">
+    <h2 class="display" style="font-size:clamp(28px,4vw,44px);margin-bottom:40px;">Voices from <em style="font-style:italic;color:var(--accent);">8 countries</em></h2>
+    <div class="testi-scroll-wrap">
+      <button class="video-scroll-btn prev" onclick="document.getElementById('testiGrid').scrollBy({left:-320,behavior:'smooth'})">&#8592;</button>
+      <div class="testi-grid" id="testiGrid">
+        <div class="testi-card"><div>Choosing Mazher as my mentor has been one of the best decisions I've made. His guidance in mapping out my career roadmap, along with regular check-ins and prompt resolution of doubts, has been invaluable. I highly recommend Mazher to anyone looking to upskill or advance their career.</div><div class="testi-author">Ashwin Sahgal · Pune, India 🇮🇳</div></div>
+        <div class="testi-card"><div>I feel incredibly fortunate to have had Mazher as my mentor. His patience, deep knowledge, and ability to inspire and bring out the best in others is truly remarkable. His encouragement gave me the confidence to push beyond my limits.</div><div class="testi-author">Vartika Singh · Sacramento, USA 🇺🇸</div></div>
+        <div class="testi-card"><div>Joining 1:1 mentorship with Mazher was a game-changer. His personalized guidance, mock interviews, and deep industry insights were invaluable. I highly recommend Mentor Mazher to anyone seeking to advance their career.</div><div class="testi-author">Priyal Savla · London, UK 🇬🇧</div></div>
+        <div class="testi-card"><div>Mazher is a great mentor who provides keen insights into areas of improvement. His practical use cases prepare us thoroughly for interviews. His support helped me grow with clarity and confidence.</div><div class="testi-author">Chirag Rathod · Brampton, Canada 🇨🇦</div></div>
+        <div class="testi-card"><div>My mentor was always there when I needed help. He explained things in a way that made sense, and his supportive nature made asking questions feel natural. I'd give him a solid 5 out of 5.</div><div class="testi-author">Akshaansh Gautam · Dublin, Ireland 🇮🇪</div></div>
+        <div class="testi-card"><div>We could reach out to Mazher anytime for clarity, and he was always there to help. The personalized learning plan and consistent encouragement pushed me to keep building my technical skills.</div><div class="testi-author">Vinay Mamillapalli · Hyderabad, India 🇮🇳</div></div>
+        <div class="testi-card"><div>Before this program, I faced a long career gap and lacked confidence. After mentorship, I regained my confidence and developed a real interest in learning. The guidance helped me stay motivated.</div><div class="testi-author">Ravneet Kaur · London, UK 🇬🇧</div></div>
+        <div class="testi-card"><div>Mazher's communication skills effectively convey complex concepts. With deep expertise in the subject matter, his mentoring style is supportive and empowering, encouraging growth while offering guidance as needed.</div><div class="testi-author">Ankita Choudhury · Bengaluru, India 🇮🇳</div></div>
+        <div class="testi-card"><div>This program helped me gain clarity and structure. Regular check-ins helped me prioritize better and stay accountable. I now feel more confident and motivated to move forward.</div><div class="testi-author">Saru Magar · Sydney, Australia 🇦🇺</div></div>
+        <div class="testi-card"><div>Mazher helped me figure out the right path to land a job. His practical insights and structured approach made a huge difference. What stood out was his patience and genuine care.</div><div class="testi-author">Uditi Chaudhary · Noida, India 🇮🇳</div></div>
+        <div class="testi-card"><div>What truly sets Mazher apart is his genuine commitment to my success. His motivational style kept me focused and driven, helping me build resilience — especially in big-tech interviews.</div><div class="testi-author">Subaira · Dubai, UAE 🇦🇪</div></div>
+        <div class="testi-card"><div>Mazher's training covered practical case studies across industries like retail, finance, and HR. Beyond tech prep, he offered genuine insights on long-term career growth and even guided me during offer negotiations.</div><div class="testi-author">Anil Singh Rawat · New Delhi, India 🇮🇳</div></div>
+        <div class="testi-card"><div>With Mazher's support, I've now joined an MNC's analytics team. He was a steady source of motivation during a tough job search phase. Couldn't be more grateful.</div><div class="testi-author">Pranay Anil Talware · Bengaluru, India 🇮🇳</div></div>
+        <div class="testi-card"><div>Mazher's mentorship made a huge impact on my growth. His way of teaching helped me build both confidence and practical skills. I highly recommend his mentorship to anyone aiming to grow in analytics.</div><div class="testi-author">Abinisha Arunagiri · Santa Clara, USA 🇺🇸</div></div>
+        <div class="testi-card"><div>Mazher blends real-world experience with personalized support. Every session felt purposeful, and his dedication to helping others grow is truly inspiring. He's not just a mentor — he's a career catalyst.</div><div class="testi-author">Sravani Pilla · Maryland, USA 🇺🇸</div></div>
+        <div class="testi-card"><div>Mazher quickly grasps mentees' strengths and weaknesses, crafting an impressive roadmap. His consistent availability and perfect layman's approach to solving any problem makes learning much easier.</div><div class="testi-author">Armash Kazi · Ratnagiri, India 🇮🇳</div></div>
+        <div class="testi-card"><div>Despite being in different time zones, Mazher has always been incredibly accommodating and willing to go the extra mile to assist. His dedication has positively impacted my growth.</div><div class="testi-author">Ashima Sharma · Edmonton, Canada 🇨🇦</div></div>
+        <div class="testi-card"><div>From sharing curated resources and certifications to offering tailored interview tips, Mazher helped me build confidence step by step. This has been an investment in a lifelong mentor.</div><div class="testi-author">Rayyan Mohammed · Monroe, USA 🇺🇸</div></div>
+        <div class="testi-card"><div>Mazher was always available, offering timely feedback and thoughtful guidance. His calm and encouraging presence kept me motivated through the ups and downs. Thanks to his support, I secured a great role.</div><div class="testi-author">Harshitha T · Bangalore, India 🇮🇳</div></div>
+        <div class="testi-card"><div>Every session with Mazher brings a wave of positivity and renewed confidence. He pushes me beyond my comfort zone while always reminding me that I can achieve more.</div><div class="testi-author">Rohan Mengde · Düsseldorf, Germany 🇩🇪</div></div>
+        <div class="testi-card"><div>From our very first session, Mazher understood my goals and helped shape a clear path forward. His industry insights, practical strategies, and unwavering support have helped me grow professionally and personally.</div><div class="testi-author">Roshni Vora · Dubai, UAE 🇦🇪</div></div>
+        <div class="testi-card"><div>Mazher's structured approach brought much-needed clarity to my interview preparation. His constant guidance, accountability, and insightful feedback gave my career journey a clear direction.</div><div class="testi-author">Sai Krishna Bharadwaj · Hyderabad, India 🇮🇳</div></div>
+        <div class="testi-card"><div>From the first session, Mazher was deeply engaged and always approachable. I now feel prepared to aim for top tech and product-based roles thanks to his well-structured and motivating sessions.</div><div class="testi-author">M Shakeer Hussain · Bangalore, India 🇮🇳</div></div>
+        <div class="testi-card"><div>Mazher taught me how to stay consistent, solve problems methodically, and stay positive under pressure. Every session added value and pushed me one step closer to my goals.</div><div class="testi-author">Shaik Mohammed · San Antonio, USA 🇺🇸</div></div>
+        <div class="testi-card"><div>Mazher not only helped me improve technically but also boosted my self-confidence. Thanks to him, I feel ready to face professional challenges and take confident steps in my career growth.</div><div class="testi-author">Revathi Datla · Munich, Germany 🇩🇪</div></div>
+        <div class="testi-card"><div>Mazher's structured mentoring helped me stay on track during uncertain phases and brought a sense of accountability I truly needed. I'm very satisfied and would absolutely recommend him.</div><div class="testi-author">Rajesh · Helsinki, Finland 🇫🇮</div></div>
+        <div class="testi-card"><div>Mazher helped me map out a personalized career roadmap and identify the key skills I needed. His sessions are always focused, motivating, and full of real-world relevance.</div><div class="testi-author">Bishnu Khanal · Darwin, Australia 🇦🇺</div></div>
+      </div>
+      <button class="video-scroll-btn next" onclick="document.getElementById('testiGrid').scrollBy({left:320,behavior:'smooth'})">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── ROADMAP ── -->
+<section id="skill_roadmap" class="section section-pad" style="background:var(--surface);">
+  <div class="container">
+    <h2 class="display" style="font-size:clamp(30px,5vw,50px);margin-bottom:12px;">Data Analyst / Business Analyst <em style="font-style:italic;color:var(--accent);">roadmap</em></h2>
+    <p style="font-size:16px;color:White;margin-bottom:56px;max-width:520px;">A structured, practical path from technical foundations to job-winning strategies.</p>
+
+    <div class="roadmap-phase-title phase-teal" style="margin-bottom:20px;">Phase 1 — <em>Skill Development</em></div>
+    <div class="roadmap-grid" style="margin-bottom:48px;">
+      <div class="roadmap-cell">
+        <div class="roadmap-cell-title"style="font-size:22px;font-weight:700;">🛠️ Technical Skills</div>
+        <ul><li>SQL</li><li>Python</li><li>Power BI</li><li>Excel</li></ul>
+      </div>
+      <div class="roadmap-cell">
+        <div class="roadmap-cell-title"style="font-size:22px;font-weight:700;">📘 Coursework</div>
+        <ul><li>Maths & Statistics</li><li>Machine Learning (Basics)</li><li>ETL / Data Handling</li><li>Git & GitHub</li><li>Cloud Basics</li><li>A/B Experimentation</li></ul>
+      </div>
+      <div class="roadmap-cell">
+        <div class="roadmap-cell-title"style="font-size:22px;font-weight:700;">🧠 Critical Thinking</div>
+        <ul><li>Puzzles & Guesstimates</li><li>Business Case Studies</li><li>Product Case Studies</li><li>Root Cause Analysis</li><li>Product Metrics</li></ul>
+      </div>
+      <div class="roadmap-cell">
+        <div class="roadmap-cell-title"style="font-size:22px;font-weight:700;">👔 Managerial</div>
+        <ul><li>Behavioral Questions</li><li>STAR Framework</li><li>Stakeholder Communication</li><li>Requirements Gathering</li></ul>
+      </div>
+    </div>
+
+    <div class="roadmap-phase-title phase-purple" style="margin-bottom:20px;">Phase 2 — <em>Job Search Preparation</em></div>
+    <div class="roadmap-grid">
+      <div class="roadmap-cell">
+        <div class="roadmap-cell-title"style="font-size:22px;font-weight:700;">💼 Hands-on Projects</div>
+        <ul><li>Business Case Projects</li><li>Portfolio Building</li><li>Dashboard Projects</li><li>EDA & Data Modeling</li><li>Storytelling with Data</li></ul>
+      </div>
+      <div class="roadmap-cell">
+        <div class="roadmap-cell-title"style="font-size:22px;font-weight:700;">📄 Resume & ATS</div>
+        <ul><li>Resume Building</li><li>ATS Friendly Format</li><li>Tailored for Roles</li><li>Metric-driven Bullets</li></ul>
+      </div>
+      <div class="roadmap-cell">
+        <div class="roadmap-cell-title"style="font-size:22px;font-weight:700;">🔗 LinkedIn Optimization</div>
+        <ul><li>Headline + Summary</li><li>Keywords + Connections</li><li>Engagement Strategy</li><li>Featured Projects</li></ul>
+      </div>
+      <div class="roadmap-cell">
+        <div class="roadmap-cell-title"style="font-size:22px;font-weight:700;">🎤 Interview Prep</div>
+        <ul><li>Interview Strategy</li><li>Mock Interviews</li><li>Job Application Funnel</li><li>Interview Question Bank</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY MENTORSHIP ── -->
 
 
-    </main>
 
+</style>
+<section id="why" class="section section-pad">
+  <div class="container">
+
+    <h2 class="display" style="font-size:clamp(28px,4vw,44px);margin-bottom:12px;">Why you need 1:1 Mentorship to <em style="font-style:italic;color:var(--accent);">land faster</em></h2>
+    <p style="font-size:18px;color:white;margin-bottom:40px;max-width:500px;">Clarity, focus, and the confidence to take bold steps toward your dream career.</p>
+    
+    <div class="why-grid">
+
+<div class="why-card">
+  <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:#ffffff;">
+    <span style="font-size:18px;">🎯</span>
+    Clarity on what & how much to study
+  </div>
+  <div style="font-size:14px;line-height:1.5;color:#cbd5e1;margin-top:8px;">
+    Know exactly what to focus on — no more guesswork or overwhelm.
+  </div>
+</div>
+
+<div class="why-card">
+  <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:#ffffff;">
+    <span style="font-size:18px;">🛣️</span>
+    Structured learning path
+  </div>
+  <div style="font-size:14px;line-height:1.5;color:#cbd5e1;margin-top:8px;">
+    Follow a step-by-step roadmap instead of jumping randomly between tools.
+  </div>
+</div>
+
+<div class="why-card">
+  <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:#ffffff;">
+    <span style="font-size:18px;">🎤</span>
+    Understanding interview standards
+  </div>
+  <div style="font-size:14px;line-height:1.5;color:#cbd5e1;margin-top:8px;">
+    Learn what's expected in real interviews — basic vs advanced, must-know topics.
+  </div>
+</div>
+
+<div class="why-card">
+  <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:#ffffff;">
+    <span style="font-size:18px;">📄</span>
+    CV that gets interviews
+  </div>
+  <div style="font-size:14px;line-height:1.5;color:#cbd5e1;margin-top:8px;">
+    A polished, ATS-friendly CV tailored to your background and target roles.
+  </div>
+</div>
+
+<div class="why-card">
+  <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:#ffffff;">
+    <span style="font-size:18px;">🧠</span>
+    Help on tough concepts
+  </div>
+  <div style="font-size:14px;line-height:1.5;color:#cbd5e1;margin-top:8px;">
+    Understand tricky topics faster with clear explanations, not just video watching.
+  </div>
+</div>
+
+<div class="why-card">
+  <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:#ffffff;">
+    <span style="font-size:18px;">🚫</span>
+    Avoid beginner mistakes
+  </div>
+  <div style="font-size:14px;line-height:1.5;color:#cbd5e1;margin-top:8px;">
+    Skip common pitfalls in projects, applications, and interviews with expert guidance.
+  </div>
+</div>
+
+<div class="why-card">
+  <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:#ffffff;">
+    <span style="font-size:18px;">💼</span>
+    Real-world projects
+  </div>
+  <div style="font-size:14px;line-height:1.5;color:#cbd5e1;margin-top:8px;">
+    Build projects that reflect real business problems and impress recruiters.
+  </div>
+</div>
+
+<div class="why-card">
+  <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:#ffffff;">
+    <span style="font-size:18px;">📅</span>
+    Accountability & consistency
+  </div>
+  <div style="font-size:14px;line-height:1.5;color:#cbd5e1;margin-top:8px;">
+    Stay on track with regular check-ins, progress reviews, and milestone tracking.
+  </div>
+</div>    </div>
+  </div>
+</section>
+
+<!-- ── PLANS ── -->
+
+<section id="Mentorship_plans" class="section section-pad" style="background:var(--surface);">
+  <div class="container">
+
+    <h2 style="font-size:clamp(30px,4vw,46px);margin-bottom:50px;color:#ffffff;font-weight:700;">
+      Choose your <span style="color:#60a5fa;">mentorship journey</span>
+    </h2>
+
+    <div class="plans-grid">
+
+      <!-- 1 MONTH -->
+      <div class="plan-card" style="padding:24px;border-radius:16px;background:#1e293b;">
+
+        <div style="font-size:22px;font-weight:700;color:#ffffff;">1 Month</div>
+        <div style="font-size:14px;color:#94a3b8;margin-top:6px;">Resume + Interview only</div>
+
+        <ul style="margin-top:16px;font-size:14px;color:#cbd5e1;line-height:1.6;">
+          <li>✔ ATS-friendly resume creation</li>
+          <li>✔ 1:1 mock interviews & feedback</li>
+          <li>✔ LinkedIn profile optimization</li>
+          <li>✔ Weekly support for doubts</li>
+        </ul>
+
+        <div style="margin-top:16px;font-size:13px;color:#94a3b8;">
+          Best for candidates who already have skills and need help converting them into offers.
+        </div>
+      </div>
+
+      <!-- 3 MONTH (HIGHLIGHTED) -->
+      <div class="plan-card" style="padding:26px;border-radius:16px;background:#1e293b;border:2px solid #3b82f6;position:relative;transform:scale(1.05);">
+
+        <div style="position:absolute;top:-12px;right:16px;background:#3b82f6;color:white;font-size:12px;padding:4px 10px;border-radius:999px;">
+          Most Popular
+        </div>
+
+        <div style="font-size:24px;font-weight:800;color:#ffffff;">3 Months</div>
+        <div style="font-size:14px;color:#cbd5e1;margin-top:6px;">Skill-building + Projects + Job Search</div>
+
+        <ul style="margin-top:18px;font-size:14px;color:#e2e8f0;line-height:1.6;">
+          <li>✔ Everything in the 1-month plan</li>
+          <li>✔ Excel, SQL, Python, Power BI (Basic → Advanced)</li>
+          <li>✔ 2–3 real-world guided projects</li>
+          <li>✔ Resume + LinkedIn tailored for your role</li>
+          <li>✔ Strategic job search + application guidance</li>
+          <li>✔ Weekly check-ins + personalized feedback</li>
+        </ul>
+
+        <div style="margin-top:18px;font-size:13px;color:#94a3b8;">
+          Best for learners who can commit 2–3 hrs/day and want a complete transformation.
+        </div>
+      </div>
+
+      <!-- 6 MONTH -->
+      <div class="plan-card" style="padding:24px;border-radius:16px;background:#1e293b;">
+
+        <div style="font-size:22px;font-weight:700;color:#ffffff;">6 Months</div>
+        <div style="font-size:14px;color:#94a3b8;margin-top:6px;">Same as 3-months — slow-paced</div>
+
+        <ul style="margin-top:16px;font-size:14px;color:#cbd5e1;line-height:1.6;">
+          <li>✔ Everything in the 3-month plan</li>
+          <li>✔ Flexible weekly milestones</li>
+          <li>✔ Ideal for working professionals</li>
+          <li>✔ Monthly progress reviews</li>
+          <li>✔ Extra time for deep mentorship</li>
+        </ul>
+
+        <div style="margin-top:16px;font-size:13px;color:#94a3b8;">
+          Best for people balancing a full-time job or career switchers who need breathing room.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ── HOW IT WORKS ── -->
+<section id="how_it_works" class="section section-pad">
+  <div class="container">
+    <h2 class="display" style="font-size:clamp(28px,4vw,44px);margin-bottom:12px;">How the <em style="font-style:italic;color:var(--accent);">mentorship works</em></h2>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:40px;max-width:520px;">Your journey starts with a personalized roadmap across 28–30 milestones. On Day 1 you'll be given 2–3 core tasks to begin your growth immediately.</p>
+    <div class="hiw-grid">
+      <div class="hiw-cell">
+        <div class="hiw-num">1</div>
+        <div class="hiw-title">Deadlines keep you sharp</div>
+        <div class="hiw-body">Every goal has a clear deadline — CV, project, or mock interview. You'll always know what's due and when. No confusion. No delays. Just pure momentum.</div>
+      </div>
+      <div class="hiw-cell">
+        <div class="hiw-num">2</div>
+        <div class="hiw-title">Quick daily check-ins</div>
+        <div class="hiw-body">10 seconds a day. Share a simple update like "Watched SQL tutorial" or "Stuck on joins." It's about staying accountable and visible throughout the program.</div>
+      </div>
+      <div class="hiw-cell">
+        <div class="hiw-num">3</div>
+        <div class="hiw-title">Instant WhatsApp support</div>
+        <div class="hiw-body">Doubts? Frustrated? Lost? Drop a message anytime. Whether it's career direction or debugging code — you're never stuck alone.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW TO APPLY ── -->
+<section id="how_to_apply" class="section section-pad" style="background:var(--surface);">
+  <div class="container">
+    <div class="apply-card">
+      <div class="eyebrow" style="justify-content:center;"><span class="eyebrow-dot"></span>Get started</div>
+      <h2 class="display" style="font-size:clamp(26px,4vw,40px);margin-bottom:8px;">How to apply</h2>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:0;">Three simple steps to begin your mentorship journey.</p>
+      <div class="apply-steps">
+        <div class="apply-step">
+          <div class="step-num">1</div>
+          <div class="step-text"><strong>Click the Apply button</strong> below to open the application form.</div>
+        </div>
+        <div class="apply-step">
+          <div class="step-num">2</div>
+          <div class="step-text"><strong>Fill in your details carefully</strong> — this helps understand your background, goals, and timeline.</div>
+        </div>
+        <div class="apply-step">
+          <div class="step-num">3</div>
+          <div class="step-text">Within <strong>3–5 days</strong>, Mazher will personally reach out via WhatsApp to guide your next steps. Want to start within 24 hours? Follow the fast-track instructions in the form.</div>
+        </div>
+      </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSefKydr62VSD5b5H42FpFMkXMoEWuit0sUYMVjsSUzwqfEQcA/viewform" target="_blank" class="btn-primary">Apply for 1:1 Mentorship</a>
+    </div>
+  </div>
+</section>
 
 </body>
 </html>
-
- 
 
