@@ -34,10 +34,8 @@
 /* ── GRID ── */
 #text-testimonials .testi-grid {
   display: grid;
-    grid-template-columns: 1fr; /* 🔥 only 1 per row */
-
-  gap: 20px;
-}
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 16px;}
 
 /* ── CARD ── */
 #text-testimonials .testi-card {
@@ -680,13 +678,9 @@ h1, h2.display {
 /* ── TEXT TESTIMONIALS ── */
 .testi-scroll-wrap { position: relative; }
 .testi-grid {
-  display: grid;
-   height: 60vh;
-  grid-template-rows: repeat(3, 1fr);
-  grid-auto-flow: column;
-  grid-auto-columns: 300px;
-  gap: 14px;
-  padding: 4px 2px 12px;
+      display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns desktop */
+  gap: 16px;
 }
 .testi-grid::-webkit-scrollbar { display: none; }
 .testi-card {
@@ -954,7 +948,7 @@ h1, h2.display {
 
         <!-- PROGRAM LINE -->
         <div style="
-          font-size:18px;
+          font-size:28px;
           color:#FFFBEB;
           margin-top:8px;
           font-weight:500;
@@ -1010,15 +1004,25 @@ h1, h2.display {
       <!-- RIGHT PROFILE -->
      <div class="hero-profile fade-in d3" style="text-align:left; margin-left:20px;">
 
-  <img src="https://topmate-staging.s3.amazonaws.com/9NQoYHEJu9apWSS5kdpZmK.png" 
-       alt="Mazher Khan"
+
+<div style="
+  width:280px;
+  height:280px;
+  border-radius:50%;
+  overflow:hidden;
+">
+  <img src="https://raw.githubusercontent.com/KHAN-THE-ANALYST/MENTORSHIP/main/p1.png"
        style="
-         width:180px;
-         height:180px;
+         width:100%;
+         height:100%;
          object-fit:cover;
-         border-radius:50%;
-         display:block;
+         object-position: 40% 45%; /* 🔥 adjust here */
        ">
+</div>
+
+
+
+
 
   <div class="profile-name" style="
     font-size:40px;
@@ -1050,7 +1054,7 @@ h1, h2.display {
 
          <div>🌍 <strong>Placed 300+ Students  Globally</strong></div>
 
-<div> 🇮🇳 India · 🇺🇸 USA · 🇬🇧 UK · 🇨🇦 Canada · 🇮🇪 Ireland · 🇩🇪 Germany · 🇦🇺 Australia · 🇦🇪 UAE
+<div> 🇮🇳 India · 🇺🇸 USA · 🇬🇧 UK · 🇨🇦 Canada · 🇮🇪 Ireland · 🇩🇪 Germany · 🇦🇺 Australia · 🇦🇪 UAE· 🇸🇬 Singapore · 🇲🇾 Malaysia · 🇴🇲 Oman · 🇶🇦 Qatar · 🇸🇦 Saudi Arabia
 </div>
 
         </div>
