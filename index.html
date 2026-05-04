@@ -34,20 +34,24 @@
 /* ── GRID ── */
 #text-testimonials .testi-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
-  gap: 16px;}
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
 
 /* ── CARD ── */
 #text-testimonials .testi-card {
   background-color: #FFFFFA;
   border: 1px solid #f0e1a0;
   border-radius: 14px;
-  padding: 18px 20px;
+  
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
 
   display: flex;
   flex-direction: column;
-  min-height: 0;
+
+    padding: 32px 36px;
+  font-size: 16px;
+  min-height: 370px;
 }
 
 /* Content area (text) */
@@ -680,18 +684,31 @@ h1, h2.display {
 .testi-grid {
       display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 columns desktop */
-  gap: 16px;
+  gap: 44px;
+    
+  align-items: stretch;
+  grid-auto-rows: 1fr;   /* ✅ ADD THIS (MOST IMPORTANT) */
+
+
 }
 .testi-grid::-webkit-scrollbar { display: none; }
 .testi-card {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 16px;
+
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+
   background: var(--surface);
   border: 1px solid var(--border2);
   border-radius: 16px;
   padding: 22px 20px;
-  font-size: 14px; color: var(--muted); line-height: 1.6;
-  display: flex; flex-direction: column; justify-content: space-between;
-  gap: 12px;
-  transition: background 0.2s;
+
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
 }
 .testi-card:hover { background: var(--surface2); }
 .testi-author {
@@ -1274,28 +1291,51 @@ h1, h2.display {
     <div class="video-scroll-wrap">
       <button class="video-scroll-btn prev" onclick="document.getElementById('videoGrid').scrollBy({left:-320,behavior:'smooth'})">&#8592;</button>
       <div class="video-grid" id="videoGrid">
-<div class="video-card"><iframe src="https://www.youtube.com/embed/M_itRHB4gt4" allowfullscreen></iframe></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/0vn0HoRtTdI" allowfullscreen></iframe></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/VWk7xfvN3UM" allowfullscreen></iframe></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/uD2kGd4CpMA" allowfullscreen></iframe></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/A-aMk7EgYp4" allowfullscreen></iframe></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/EiNarm1JCr0" allowfullscreen></iframe></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/3bt2con5Os8" allowfullscreen></iframe></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/kXggvYJDjTE" allowfullscreen></iframe></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/AWcKLWOiJYU" allowfullscreen></iframe></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/ZbM6VhU5TxQ" allowfullscreen></iframe></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/yy-U11S3hew" allowfullscreen></iframe></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/L3my5L_HJak" allowfullscreen></iframe></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/gKfWqwfC4Rs" allowfullscreen></iframe></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/-tYp6Lkg7q0" allowfullscreen></iframe></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/caiDt9rbbDU" allowfullscreen></iframe></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/Q3lUTOnBZ5E" allowfullscreen></iframe></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/o26UWIHGyQA" allowfullscreen></iframe></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/vAd5NFmV0kg" allowfullscreen></iframe></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/rd7l5LbB9AM" allowfullscreen></iframe></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/DM3IyiF8cbE" allowfullscreen></iframe></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/v0Ma_HuGaYU" allowfullscreen></iframe></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/bn0Vl97p_k0" allowfullscreen></iframe></div>
+  <!-- Just copy-paste blocks -->
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/pvRWWuTd6Zk" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/oN411PAkU80" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/0vn0HoRtTdI" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/A-aMk7EgYp4" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/ZbM6VhU5TxQ" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/yy-U11S3hew" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/A19_-WC0k6M" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/L3my5L_HJak" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/gKfWqwfC4Rs" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/3bt2con5Os8" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/kXggvYJDjTE" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/EiNarm1JCr0" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/AWcKLWOiJYU" loading="lazy" allowfullscreen></iframe></div>
+
+  <!-- Shorts -->
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/GVqYHLGEfUk" loading="lazy" allowfullscreen></iframe></div>
+
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/01WVWAb141Y" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/VWk7xfvN3UM" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/M_itRHB4gt4" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/45DNtHSxqd0" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/rd7l5LbB9AM" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/zTDwCM_M4HQ" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/-tYp6Lkg7q0" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/ryrV29Zq0_k" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/hXX7y6a7Fzs" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/O3OQX7LaAfw" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/vOz2yGSbzt0" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/caiDt9rbbDU" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/22Rb0dd9Oi4" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/Q3lUTOnBZ5E" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/DM3IyiF8cbE" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/ysl4_UUDgew" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/v0Ma_HuGaYU" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/uD2kGd4CpMA" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/87eKpzhlg78" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/bn0Vl97p_k0" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/Uo1oB4cn3l0" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/kEx3F4nhoOk" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/hModnA4IbqQ" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/Y7k72yYtvX4" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/EswcD-dDnls" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/o26UWIHGyQA" loading="lazy" allowfullscreen></iframe></div>
+  <div class="video-card"><iframe src="https://www.youtube.com/embed/vAd5NFmV0kg" loading="lazy" allowfullscreen></iframe></div>
       </div>
       <button class="video-scroll-btn next" onclick="document.getElementById('videoGrid').scrollBy({left:320,behavior:'smooth'})">&#8594;</button>
     </div>
@@ -1311,33 +1351,153 @@ h1, h2.display {
     <div class="testi-scroll-wrap">
       <button class="video-scroll-btn prev" onclick="document.getElementById('testiGrid').scrollBy({left:-320,behavior:'smooth'})">&#8592;</button>
       <div class="testi-grid" id="testiGrid">
-        <div class="testi-card"><div>Choosing Mazher as my mentor has been one of the best decisions I've made. His guidance in mapping out my career roadmap, along with regular check-ins and prompt resolution of doubts, has been invaluable. I highly recommend Mazher to anyone looking to upskill or advance their career.</div><div class="testi-author">Ashwin Sahgal · Pune, India 🇮🇳</div></div>
-        <div class="testi-card"><div>I feel incredibly fortunate to have had Mazher as my mentor. His patience, deep knowledge, and ability to inspire and bring out the best in others is truly remarkable. His encouragement gave me the confidence to push beyond my limits.</div><div class="testi-author">Vartika Singh · Sacramento, USA 🇺🇸</div></div>
-        <div class="testi-card"><div>Joining 1:1 mentorship with Mazher was a game-changer. His personalized guidance, mock interviews, and deep industry insights were invaluable. I highly recommend Mentor Mazher to anyone seeking to advance their career.</div><div class="testi-author">Priyal Savla · London, UK 🇬🇧</div></div>
-        <div class="testi-card"><div>Mazher is a great mentor who provides keen insights into areas of improvement. His practical use cases prepare us thoroughly for interviews. His support helped me grow with clarity and confidence.</div><div class="testi-author">Chirag Rathod · Brampton, Canada 🇨🇦</div></div>
-        <div class="testi-card"><div>My mentor was always there when I needed help. He explained things in a way that made sense, and his supportive nature made asking questions feel natural. I'd give him a solid 5 out of 5.</div><div class="testi-author">Akshaansh Gautam · Dublin, Ireland 🇮🇪</div></div>
-        <div class="testi-card"><div>We could reach out to Mazher anytime for clarity, and he was always there to help. The personalized learning plan and consistent encouragement pushed me to keep building my technical skills.</div><div class="testi-author">Vinay Mamillapalli · Hyderabad, India 🇮🇳</div></div>
-        <div class="testi-card"><div>Before this program, I faced a long career gap and lacked confidence. After mentorship, I regained my confidence and developed a real interest in learning. The guidance helped me stay motivated.</div><div class="testi-author">Ravneet Kaur · London, UK 🇬🇧</div></div>
-        <div class="testi-card"><div>Mazher's communication skills effectively convey complex concepts. With deep expertise in the subject matter, his mentoring style is supportive and empowering, encouraging growth while offering guidance as needed.</div><div class="testi-author">Ankita Choudhury · Bengaluru, India 🇮🇳</div></div>
-        <div class="testi-card"><div>This program helped me gain clarity and structure. Regular check-ins helped me prioritize better and stay accountable. I now feel more confident and motivated to move forward.</div><div class="testi-author">Saru Magar · Sydney, Australia 🇦🇺</div></div>
-        <div class="testi-card"><div>Mazher helped me figure out the right path to land a job. His practical insights and structured approach made a huge difference. What stood out was his patience and genuine care.</div><div class="testi-author">Uditi Chaudhary · Noida, India 🇮🇳</div></div>
-        <div class="testi-card"><div>What truly sets Mazher apart is his genuine commitment to my success. His motivational style kept me focused and driven, helping me build resilience — especially in big-tech interviews.</div><div class="testi-author">Subaira · Dubai, UAE 🇦🇪</div></div>
-        <div class="testi-card"><div>Mazher's training covered practical case studies across industries like retail, finance, and HR. Beyond tech prep, he offered genuine insights on long-term career growth and even guided me during offer negotiations.</div><div class="testi-author">Anil Singh Rawat · New Delhi, India 🇮🇳</div></div>
-        <div class="testi-card"><div>With Mazher's support, I've now joined an MNC's analytics team. He was a steady source of motivation during a tough job search phase. Couldn't be more grateful.</div><div class="testi-author">Pranay Anil Talware · Bengaluru, India 🇮🇳</div></div>
-        <div class="testi-card"><div>Mazher's mentorship made a huge impact on my growth. His way of teaching helped me build both confidence and practical skills. I highly recommend his mentorship to anyone aiming to grow in analytics.</div><div class="testi-author">Abinisha Arunagiri · Santa Clara, USA 🇺🇸</div></div>
-        <div class="testi-card"><div>Mazher blends real-world experience with personalized support. Every session felt purposeful, and his dedication to helping others grow is truly inspiring. He's not just a mentor — he's a career catalyst.</div><div class="testi-author">Sravani Pilla · Maryland, USA 🇺🇸</div></div>
-        <div class="testi-card"><div>Mazher quickly grasps mentees' strengths and weaknesses, crafting an impressive roadmap. His consistent availability and perfect layman's approach to solving any problem makes learning much easier.</div><div class="testi-author">Armash Kazi · Ratnagiri, India 🇮🇳</div></div>
-        <div class="testi-card"><div>Despite being in different time zones, Mazher has always been incredibly accommodating and willing to go the extra mile to assist. His dedication has positively impacted my growth.</div><div class="testi-author">Ashima Sharma · Edmonton, Canada 🇨🇦</div></div>
-        <div class="testi-card"><div>From sharing curated resources and certifications to offering tailored interview tips, Mazher helped me build confidence step by step. This has been an investment in a lifelong mentor.</div><div class="testi-author">Rayyan Mohammed · Monroe, USA 🇺🇸</div></div>
-        <div class="testi-card"><div>Mazher was always available, offering timely feedback and thoughtful guidance. His calm and encouraging presence kept me motivated through the ups and downs. Thanks to his support, I secured a great role.</div><div class="testi-author">Harshitha T · Bangalore, India 🇮🇳</div></div>
-        <div class="testi-card"><div>Every session with Mazher brings a wave of positivity and renewed confidence. He pushes me beyond my comfort zone while always reminding me that I can achieve more.</div><div class="testi-author">Rohan Mengde · Düsseldorf, Germany 🇩🇪</div></div>
-        <div class="testi-card"><div>From our very first session, Mazher understood my goals and helped shape a clear path forward. His industry insights, practical strategies, and unwavering support have helped me grow professionally and personally.</div><div class="testi-author">Roshni Vora · Dubai, UAE 🇦🇪</div></div>
-        <div class="testi-card"><div>Mazher's structured approach brought much-needed clarity to my interview preparation. His constant guidance, accountability, and insightful feedback gave my career journey a clear direction.</div><div class="testi-author">Sai Krishna Bharadwaj · Hyderabad, India 🇮🇳</div></div>
-        <div class="testi-card"><div>From the first session, Mazher was deeply engaged and always approachable. I now feel prepared to aim for top tech and product-based roles thanks to his well-structured and motivating sessions.</div><div class="testi-author">M Shakeer Hussain · Bangalore, India 🇮🇳</div></div>
-        <div class="testi-card"><div>Mazher taught me how to stay consistent, solve problems methodically, and stay positive under pressure. Every session added value and pushed me one step closer to my goals.</div><div class="testi-author">Shaik Mohammed · San Antonio, USA 🇺🇸</div></div>
-        <div class="testi-card"><div>Mazher not only helped me improve technically but also boosted my self-confidence. Thanks to him, I feel ready to face professional challenges and take confident steps in my career growth.</div><div class="testi-author">Revathi Datla · Munich, Germany 🇩🇪</div></div>
-        <div class="testi-card"><div>Mazher's structured mentoring helped me stay on track during uncertain phases and brought a sense of accountability I truly needed. I'm very satisfied and would absolutely recommend him.</div><div class="testi-author">Rajesh · Helsinki, Finland 🇫🇮</div></div>
-        <div class="testi-card"><div>Mazher helped me map out a personalized career roadmap and identify the key skills I needed. His sessions are always focused, motivating, and full of real-world relevance.</div><div class="testi-author">Bishnu Khanal · Darwin, Australia 🇦🇺</div></div>
+
+<div class="testi-card"><div>Choosing Mazher as my mentor changed how I approached my career. I built strong SQL, Python, and analytics skills step by step. Real-world projects helped me showcase work on my resume. Resume feedback improved my shortlisting chances significantly. Mock interviews clarified expectations. I also learned to apply strategically using referrals and cold emailing, which gave me a clear edge.</div><div class="testi-author">Ashwin Sahgal · Pune, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>Before joining, I was confused about what to focus on. The sessions brought clarity and structure to my preparation. I worked on meaningful SQL and Python projects to understand real use cases. My resume was reviewed multiple times, each iteration improving it. Interview prep was practical and built my confidence. I also learned job application and networking strategies effectively.</div><div class="testi-author">Priyanka Singh · Sacramento, USA 🇺🇸</div></div>
+ 
+<div class="testi-card"><div>The mentorship was highly structured and focused on practical learning. Instead of random tutorials, I followed a clear roadmap covering analytics, tools, and projects. I built end-to-end projects I could explain confidently in interviews. Resume feedback helped highlight my strengths. Mock interviews gave realistic insight into company evaluations. Referral and outreach strategies improved my job search.</div><div class="testi-author">Priyal Savla · London, UK 🇬🇧</div></div>
+ 
+<div class="testi-card"><div>What made this mentorship different was the focus on real-world problem solving. I worked on actual datasets, which helped me think like a data analyst. The resume improvement process was detailed, teaching me to present work effectively. Interview prep covered both technical and behavioral aspects, boosting my confidence. Networking and cold emailing guidance helped me explore more opportunities.</div><div class="testi-author">Chirag Rathod · Brampton, Canada 🇨🇦</div></div>
+ 
+<div class="testi-card"><div>I struggled with consistency before joining, but the mentorship kept me on track. Weekly goals and regular feedback ensured accountability. I improved SQL and Python skills significantly through guided projects. Resume reviews refined my profile and highlighted relevant experience. Mock interviews helped me communicate thoughts clearly. I also learned to apply strategically rather than randomly.</div><div class="testi-author">Akshaansh Gautam · Dublin, Ireland 🇮🇪</div></div>
+ 
+<div class="testi-card"><div>The biggest advantage was having a clear roadmap. I focused on the right skills instead of wasting time on unnecessary topics. Projects were aligned with real-world scenarios, making them valuable for interviews. My resume improved greatly after multiple feedback sessions. Interview prep was structured and helped me approach different question types. I also learned networking and referral strategies.</div><div class="testi-author">Vinay Mamillapalli · Hyderabad, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>After a career gap, I was unsure how to restart. The mentorship helped me regain confidence and build skills gradually. I worked on practical projects that strengthened my analytics understanding. Resume guidance helped me present experience effectively despite the gap. Interview prep sessions helped me overcome fear and improve communication. Constant support made it easier to stay consistent.</div><div class="testi-author">Ravneet Kaur · London, UK 🇬🇧</div></div>
+ 
+<div class="testi-card"><div>The sessions were easy to understand and focused on clarity. Complex topics were broken into simple steps, making learning smooth. I worked on multiple projects applying concepts in real scenarios. Resume reviews were detailed and helped me improve my profile significantly. Mock interviews helped me practice and gain confidence. I also learned to approach job applications more strategically.</div><div class="testi-author">Ankita Choudhury · Bengaluru, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The mentorship helped me build consistency in my learning. Weekly targets and feedback sessions kept me on track. I improved technical skills through hands-on projects and practical exercises. Resume guidance helped me present my work effectively. Interview preparation sessions clarified expectations. I also learned networking and outreach strategies that helped me explore more opportunities.</div><div class="testi-author">Saru Magar · Sydney, Australia 🇦🇺</div></div>
+ 
+<div class="testi-card"><div>I was confused about where to start before joining. The structured roadmap helped me focus on the right skills and topics. I worked on meaningful projects I could showcase confidently. Resume feedback improved my profile and increased shortlisting chances. Mock interviews helped me gain confidence and communicate better. I also learned how to approach job applications more effectively.</div><div class="testi-author">Suman Chaudhary · Noida, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The mentorship combined technical learning with career guidance. I improved analytics skills while working on projects and building my resume. Interview prep sessions helped me understand expectations clearly. The structured approach and continuous feedback kept me consistent. I also learned how to apply strategically and reach out to recruiters, which made a big difference in my confidence.</div><div class="testi-author">Subaira · Dubai, UAE 🇦🇪</div></div>
+ 
+<div class="testi-card"><div>The practical approach made this mentorship very effective. I worked on case studies and projects that helped me understand real-world scenarios. Resume reviews improved my profile significantly. Interview preparation sessions were very helpful in building confidence. I also gained insights into networking and outreach strategies. Overall, the experience helped me grow both technically and professionally.</div><div class="testi-author">Anil Singh Rawat · New Delhi, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>This mentorship played a key role in helping me secure an analytics role. The structured learning, project work, and resume building made a significant difference. Mock interviews helped me prepare and refine my answers effectively. Continuous feedback and support kept me motivated throughout the journey. I left with stronger skills, a polished resume, and confidence to pursue new roles.</div><div class="testi-author">Pranay Anil Talware · Bengaluru, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The focus on real-world skills helped me gain confidence quickly. I worked on projects relevant to industry requirements, making learning practical. Resume guidance helped me present my work more effectively. Interview preparation sessions were very practical and realistic. I also learned how to approach job applications strategically. This mentorship made a big difference in my overall preparation and readiness.</div><div class="testi-author">Raghav · Santa Clara, USA 🇺🇸</div></div>
+ 
+<div class="testi-card"><div>Each session added value and helped me improve gradually. The structured approach made learning much more effective overall. I worked on projects, improved my resume, and prepared for interviews in a systematic way. Feedback sessions were very helpful in identifying gaps and refining my approach. I now feel significantly more confident in my skills and readiness to face interviews.</div><div class="testi-author">Sravani Pilla · Maryland, USA 🇺🇸</div></div>
+ 
+<div class="testi-card"><div>The mentorship helped me identify my strengths and improve my weak areas. Guidance was practical and easy to follow throughout the program. I worked on projects that helped me understand analytics concepts better. Resume feedback improved my profile significantly, increasing shortlisting chances. I also gained confidence in interviews through regular mock sessions and structured preparation.</div><div class="testi-author">Armash Kazi · Ratnagiri, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>Even with time zone differences, the support remained consistent throughout the program. The structured plan and regular feedback helped me stay on track. I improved my technical skills and gained confidence through hands-on projects. Interview preparation sessions were very helpful and realistic. I now feel more prepared and equipped to face analytics opportunities with clarity and confidence.</div><div class="testi-author">Ashima Sharma · Edmonton, Canada 🇨🇦</div></div>
+ 
+<div class="testi-card"><div>The mentorship helped me build confidence step by step. From learning concepts to working on projects and preparing for interviews, everything was covered systematically. The structured approach made learning easier and more focused. I also learned how to approach job applications effectively using referrals and outreach. I now feel more ready to take on analytics roles confidently.</div><div class="testi-author">Rayyan Mohammed · Monroe, USA 🇺🇸</div></div>
+ 
+<div class="testi-card"><div>Regular feedback and structured guidance helped me stay motivated throughout my preparation. The sessions were practical and focused on real-world application. I improved my technical skills and gained confidence through consistent practice. Mock interview sessions helped me perform better under pressure. The mentorship helped me prepare more effectively for interviews and job applications.</div><div class="testi-author">Harshitha T · Bangalore, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The mentorship pushed me beyond my comfort zone in the best way possible. I improved both technically and mentally through structured sessions and guided projects. The continuous support kept me consistent even during challenging phases. Resume feedback and interview preparation helped me present myself more confidently. I now feel significantly more prepared for analytics opportunities.</div><div class="testi-author">Rohan Mengde · Düsseldorf, Germany 🇩🇪</div></div>
+ 
+<div class="testi-card"><div>A clear roadmap helped me stay focused throughout my preparation journey. The mentorship provided structure where I had none before, guiding me on skills, projects, and resume building. Interview preparation was practical and helped me communicate more confidently. I also learned how to approach applications strategically. The guidance made a big difference in how I approach my career.</div><div class="testi-author">Roshni Vora · Dubai, UAE 🇦🇪</div></div>
+ 
+<div class="testi-card"><div>The structured approach improved my interview preparation and confidence significantly. Sessions focused on practical skills and real-world projects, making learning purposeful. Resume feedback helped me present my profile more effectively. Mock interviews gave me a realistic understanding of what companies expect. I now feel ready to pursue opportunities with clarity, confidence, and a stronger skill set.</div><div class="testi-author">Sai Krishna Bharadwaj · Hyderabad, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The sessions were engaging and practical throughout the program. I learned how to apply analytics concepts in real-world scenarios through guided projects. Resume feedback helped me highlight my strengths better. Interview preparation was structured and helped me gain clarity and confidence. I also learned how to approach job applications strategically. The mentorship made a meaningful difference in my readiness.</div><div class="testi-author">M Shakeer Hussain · Bangalore, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>I learned the importance of consistency and structured thinking through this mentorship. The roadmap kept me focused and helped me avoid wasting time on irrelevant topics. I worked on projects and improved my resume significantly. Mock interviews helped me structure my answers better. The mentorship added real value to my preparation and gave me confidence to pursue analytics roles.</div><div class="testi-author">Shaik Mohammed · San Antonio, USA 🇺🇸</div></div>
+ 
+<div class="testi-card"><div>The mentorship improved both my technical skills and confidence significantly. Structured sessions and hands-on projects helped me understand analytics in a practical way. Resume reviews were detailed and helped me improve my profile. Interview preparation sessions were very useful in building confidence and refining my answers. I now feel more capable and ready to pursue analytics opportunities.</div><div class="testi-author">Revathi Datla · Munich, Germany 🇩🇪</div></div>
+ 
+<div class="testi-card"><div>The structured mentoring kept me accountable and focused during uncertain phases of my career journey. Sessions were practical and consistently guided me toward the right skills and projects. Resume feedback and mock interview preparation helped me gain clarity and confidence. I also learned how to approach job applications strategically. The mentorship provided the direction I needed to move forward.</div><div class="testi-author">Rajesh · Helsinki, Finland 🇫🇮</div></div>
+ 
+<div class="testi-card"><div>The mentorship helped me build a strong roadmap aligned with my career goals in analytics. I worked on meaningful projects that improved my understanding of real-world data problems. Resume guidance helped me present my profile more effectively. Interview preparation sessions were very helpful. I also learned how to approach job applications and networking more strategically and confidently.</div><div class="testi-author">Bishnu Khanal · Darwin, Australia 🇦🇺</div></div>
+ 
+<div class="testi-card"><div>I gained clarity and confidence through structured learning and consistent guidance throughout this program. Sessions focused on practical skills and hands-on projects that improved my understanding. Resume feedback helped me improve my profile significantly. Mock interviews gave me confidence to perform better. I also learned how to approach job applications and networking more strategically and effectively.</div><div class="testi-author">Adi Narayana Reddy · London, UK 🇬🇧</div></div>
+ 
+<div class="testi-card"><div>Hands-on projects and structured sessions helped me build strong analytics skills from the ground up. Each week had clear goals that kept me focused and consistent. Resume feedback improved my profile and increased shortlisting chances. Mock interviews helped me gain confidence and refine my communication. I also learned how to approach job applications and networking more strategically and effectively.</div><div class="testi-author">Abhijeeth S · Toronto, Canada 🇨🇦</div></div>
+ 
+<div class="testi-card"><div>The mentorship moved me from confusion to clarity. I started without a proper plan, but the structured roadmap helped me focus on SQL, Python, and analytics fundamentals. Real-world projects strengthened my understanding. Resume reviews helped me present my work effectively. Mock interviews built confidence. I also learned to apply strategically through referrals and outreach, improving my response rate.</div><div class="testi-author">Aishwarya Pandit · Pune, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>What I liked most was the practical approach. Instead of just theory, I worked on real datasets and solved business problems, helping me understand analytics better. Resume feedback sessions improved my profile significantly. Interview preparation was structured and gave me clarity on expectations. I also learned how to approach job applications and networking effectively, making preparation more focused.</div><div class="testi-author">Sakshi Saha · Kolkata, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The mentorship helped me build consistency in my learning. Weekly goals and regular feedback kept me on track. I improved SQL and Python skills through hands-on projects. Resume guidance helped me highlight my strengths better. Mock interviews gave me confidence to face real scenarios. I also learned how to approach job applications strategically instead of applying randomly and without direction.</div><div class="testi-author">Sri Harsha · Hyderabad, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>Before joining, I struggled to understand how analytics works in real jobs. The mentorship focused on practical learning and project building, which made a huge difference. Resume reviews helped me improve my profile, and interview preparation gave me confidence. I also learned about networking and referrals, which helped me find better and more relevant job opportunities to pursue.</div><div class="testi-author">Himali Thakkar · Ahmedabad, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The structured approach helped me focus on the right skills. I worked on projects aligned with industry expectations, making them useful for interviews. Resume feedback improved my shortlisting chances significantly. Mock interviews gave me clarity on presenting my answers confidently. The mentorship also helped me stay consistent and motivated throughout, which was key to my overall improvement.</div><div class="testi-author">Narendra Kotta · Vizag, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>This mentorship helped me understand analytics from a practical perspective. I improved my technical skills while working on real-world projects. Resume guidance helped me present my work effectively to recruiters. Interview preparation sessions were very helpful in building confidence. I also learned how to apply strategically and connect with recruiters using referrals and outreach strategies.</div><div class="testi-author">Gitesh Wadhwa · Delhi, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The sessions were very structured and easy to follow throughout the program. I worked on multiple projects applying concepts in real scenarios. Resume reviews helped me improve my profile significantly. Mock interviews gave me confidence and helped me refine my answers. I also learned how to approach job applications and networking more effectively, improving my overall preparation strategy.</div><div class="testi-author">Sneha Nerkar · Nagpur, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The mentorship helped me progress faster than I expected. The structured roadmap ensured I focused on the right topics without wasting time. I worked on meaningful projects that strengthened my understanding. Resume guidance improved my profile. Interview preparation sessions gave me confidence. I also learned about referrals and outreach strategies that improved my job search success.</div><div class="testi-author">Bibhav Pal · Guwahati, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The guidance helped me build strong fundamentals in analytics through structured sessions. I worked on projects aligned with real-world scenarios, improving problem-solving skills. Resume feedback improved my profile significantly. Mock interviews helped me gain confidence and clarity. I also learned how to approach job applications more effectively using referrals and outreach, which expanded my opportunities.</div><div class="testi-author">Hariharan M · Chennai, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The mentorship provided a clear direction and helped me stay consistent throughout my preparation. I improved technical skills through hands-on projects and regular practice. Resume guidance helped me present my work better to recruiters. Interview preparation sessions were very helpful and practical. I also learned how to approach networking and referrals to expand my job search opportunities.</div><div class="testi-author">Soumya Rajashekar · Bengaluru, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The sessions helped me understand how to apply analytics concepts in real-world scenarios. I worked on projects that strengthened my skills and improved problem-solving. Resume feedback helped me improve my profile significantly. Interview preparation sessions gave me confidence and clarity. The structured approach made learning easier and helped me stay consistent throughout my preparation.</div><div class="testi-author">Debapriyo Mukherjee · Kolkata, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>I gained clarity on what skills are required for analytics roles through this mentorship. The program helped me build strong projects and improve my resume significantly. Mock interviews helped me gain confidence and refine communication. I also learned how to approach job applications strategically using referrals and outreach. The structured guidance made a big difference in my overall readiness.</div><div class="testi-author">Aditya Raj · Patna, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The structured learning approach helped me stay focused and avoid distractions throughout. I worked on meaningful projects and improved my technical skills consistently. Resume feedback helped me present my work effectively to recruiters. Interview preparation sessions were very useful in building confidence. The mentorship gave me a clear direction and kept me accountable during my preparation.</div><div class="testi-author">Vishal Taliyan · Ghaziabad, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The mentorship helped me rebuild confidence and improve my skills step by step. I worked on projects that strengthened my understanding of analytics concepts. Resume guidance helped me improve my profile and present my experience more effectively. Interview preparation sessions were very helpful in building confidence. I now feel more ready and prepared to pursue analytics opportunities.</div><div class="testi-author">Geetha · Hyderabad, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The sessions were very practical and focused on real-world applications throughout the program. I worked on projects that helped me understand analytics concepts better. Resume feedback improved my profile significantly. Interview preparation sessions gave me confidence and clarity. The structured approach kept me on track and motivated. I now feel more prepared to pursue analytics opportunities.</div><div class="testi-author">Jaanvi · Noida, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The mentorship helped me stay consistent and focused throughout my preparation journey. I improved technical skills through guided projects and regular practice. Resume guidance helped me improve my profile and highlight relevant strengths. Interview preparation sessions were very helpful in building confidence. I now feel more prepared and capable of pursuing analytics roles with clarity and direction.</div><div class="testi-author">Raksha G · Bengaluru, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The structured plan helped me improve my skills gradually and consistently. I worked on projects that strengthened my understanding of analytics. Resume feedback improved my profile and increased shortlisting chances. Interview preparation sessions helped me gain confidence and refine my answers. The mentorship provided clear direction and kept me motivated throughout my preparation journey.</div><div class="testi-author">Swati Jadhav · Pune, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The mentorship helped me gain clarity and confidence throughout my preparation. I worked on projects aligned with industry expectations, making learning practical and focused. Resume guidance helped me improve my profile significantly. Interview preparation sessions were very helpful in building confidence and clarity. The structured approach kept me on track and motivated throughout the entire program.</div><div class="testi-author">Jagadeep Mudiraj · Hyderabad, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The sessions helped me identify my weak areas and work on improving them systematically. I worked on projects that strengthened my analytics skills and problem-solving ability. Resume feedback improved my profile significantly. Interview preparation sessions gave me confidence and clarity. The structured mentorship kept me motivated and helped me approach my preparation in a more focused way.</div><div class="testi-author">Vidya Rai · Patna, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The mentorship helped me stay consistent and focused throughout the entire program. I improved my technical skills through hands-on projects and regular practice. Resume guidance helped me improve my profile effectively. Interview preparation sessions were very helpful in building confidence and refining my answers. I now feel more prepared and capable of pursuing analytics opportunities with clarity.</div><div class="testi-author">Melany Simon · Toronto, Canada 🇨🇦</div></div>
+ 
+<div class="testi-card"><div>The structured learning approach helped me improve my skills gradually and consistently. I worked on projects that strengthened my understanding of analytics concepts. Resume feedback improved my profile and increased shortlisting chances. Interview preparation sessions gave me confidence and clarity. The mentorship kept me accountable and motivated throughout, helping me approach my preparation more effectively.</div><div class="testi-author">Md Aminuddin · Hyderabad, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The mentorship helped me gain clarity and confidence in my analytics preparation. I worked on projects aligned with industry expectations, making learning very practical. Resume guidance helped me improve my profile significantly. Interview preparation sessions were very helpful in building confidence. The structured approach kept me focused and motivated throughout the entire program.</div><div class="testi-author">Mohammad Asif · Bangalore, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The sessions were practical and focused on real-world analytics applications. I worked on projects that strengthened my skills and improved problem-solving ability. Resume feedback improved my profile significantly. Interview preparation sessions gave me confidence and helped me refine my answers. The structured mentorship kept me motivated and helped me approach preparation in a focused and effective way.</div><div class="testi-author">Hari Mohan Sharma · Ahmedabad, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The mentorship helped me stay consistent and focused throughout my preparation journey. I improved my technical skills through guided projects and regular practice. Resume guidance helped me improve my profile significantly. Interview preparation sessions were very helpful in building confidence and clarity. The structured approach kept me accountable and motivated toward achieving my analytics career goals.</div><div class="testi-author">Aditi Gupta · Delhi, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The structured approach helped me improve my skills gradually and consistently. I worked on projects that strengthened my understanding of analytics concepts. Resume feedback improved my profile and increased shortlisting chances. Interview preparation sessions helped me gain confidence and refine communication. The mentorship provided clear direction and kept me motivated throughout my entire preparation journey.</div><div class="testi-author">Apurva Radke · Nagpur, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The mentorship helped me gain clarity and confidence in my analytics career preparation. I worked on projects aligned with industry expectations, making learning practical and focused. Resume guidance helped me improve my profile significantly. Interview preparation sessions were very helpful in building confidence. The structured approach kept me on track and motivated throughout the program.</div><div class="testi-author">Arbaz Khan · Mumbai, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The sessions were practical and focused on real-world analytics applications throughout. I worked on projects that strengthened my skills and improved problem-solving. Resume feedback improved my profile significantly. Interview preparation sessions gave me confidence and clarity. The structured mentorship kept me focused and motivated throughout, helping me approach my preparation in a more effective way.</div><div class="testi-author">Onish Dbritto · Kolkata, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The mentorship helped me stay consistent and focused throughout my preparation. I improved technical skills through hands-on projects and regular feedback. Resume guidance helped me improve my profile effectively. Interview preparation sessions were very helpful in building confidence. The structured approach kept me accountable and motivated toward my goal of transitioning into an analytics role.</div><div class="testi-author">Abdul Muqtadir · Hyderabad, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The structured approach helped me improve my skills gradually through this mentorship program. I worked on projects that strengthened my understanding of analytics. Resume feedback improved my profile and increased shortlisting chances. Interview preparation sessions helped me gain confidence and communicate better. The mentorship provided clear direction and kept me motivated throughout my entire journey.</div><div class="testi-author">Spoorthi Sakalabhaktula · Bengaluru, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>Coming from a non-tech background, I found analytics overwhelming at first. The mentorship broke everything into a simple, structured plan. I started with Excel and SQL, then moved into Python and visualization tools. Guided projects helped me explain my work confidently in interviews. Resume reviews improved my profile greatly. I also learned to apply strategically, which improved my response rate.</div><div class="testi-author">Shreya Pandey · Delhi, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>As a fresher, I had no idea how to build a strong profile. The mentorship helped me focus on the right skills and projects. I worked on real datasets, making learning practical. Resume feedback highlighted my strengths better. Interview preparation was structured and realistic, boosting confidence. I also learned how to reach out for referrals and apply strategically, giving me a clear advantage.</div><div class="testi-author">Navya Manohar · Bengaluru, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>I had been learning analytics on my own but wasn't seeing progress. The structured roadmap completely changed that. Each week had clear goals, and regular feedback kept me consistent. I built multiple projects I could showcase confidently. My resume improved through several revisions. Interview prep sessions helped refine my answers. I also gained clarity on how to approach applications and networking.</div><div class="testi-author">Kush Arora · Noida, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>What stood out was the focus on real-world application. Instead of just learning concepts, I worked on projects that solved practical problems. This made explaining my work during interviews much easier. Resume reviews were detailed and improved shortlisting chances. Mock interviews gave me confidence and clarity. I also learned how to approach job applications more strategically and effectively.</div><div class="testi-author">Mehwish Khan · Hyderabad, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>After multiple failed interviews, I realized I needed structured guidance. The mentorship helped me identify mistakes and fix them step by step. I refined my projects and improved my resume significantly. Mock interviews were extremely helpful in understanding expectations. I also learned how to communicate my answers better. This significantly improved my confidence and overall interview performance.</div><div class="testi-author">Sarthak Jaiswal · Lucknow, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The mentorship helped me move from theory to practical understanding. I worked on projects involving real datasets, which improved my problem-solving skills. Resume feedback helped me present my work effectively to recruiters. Interview preparation sessions gave me clarity on what companies expect. I also learned how to apply strategically using referrals and outreach. The guidance made a big difference.</div><div class="testi-author">Anshika · Barnala, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>I was struggling with consistency before joining this mentorship program. The structured weekly plan helped me stay focused and disciplined. I improved SQL and Python skills through hands-on practice and guided projects. Resume reviews helped me improve my profile. Mock interviews helped me gain confidence. The mentorship also guided me on job applications and networking strategies effectively.</div><div class="testi-author">Rushikesh Dongre · Mumbai, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The biggest benefit was clarity. I stopped wasting time on random topics and focused on what actually matters for analytics roles. Projects were aligned with industry expectations, which helped me during interviews. Resume feedback improved my shortlisting chances. Interview preparation sessions helped me gain confidence and structure my answers better. I now feel more prepared and focused.</div><div class="testi-author">Pragati Jain · Jaipur, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The mentorship helped me build a strong foundation in analytics through structured sessions. I worked on projects that improved my understanding of real-world data problems. Resume guidance helped me improve my profile significantly. Interview preparation sessions were very helpful in building confidence. I now feel ready and capable to pursue analytics opportunities with clarity and direction.</div><div class="testi-author">Kavya Cheemakurthi · Vizag, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>I liked how the mentorship focused on both technical and career aspects together. I improved my skills while also working on resume and interview preparation. The structured approach made learning easier and more purposeful. Regular feedback helped me stay on track consistently. I also learned how to approach job applications more effectively using referrals and outreach strategies.</div><div class="testi-author">Manav Desai · Ahmedabad, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>Coming from a different domain, I found it difficult to transition into analytics. The mentorship helped me bridge that gap effectively. I worked on projects that improved my understanding of analytics concepts. Resume guidance helped me present my transferable skills more effectively. Interview preparation sessions helped me gain confidence, clarity, and the ability to communicate my experience better.</div><div class="testi-author">Shaima Siddiqua · Hyderabad, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The structured roadmap helped me stay focused and avoid distractions throughout my preparation. I worked on meaningful projects that strengthened my analytics skills. Resume feedback helped me improve my profile significantly. Interview preparation sessions gave me confidence. I also learned how to approach networking and referrals to improve my chances of getting noticed by the right opportunities.</div><div class="testi-author">Aliya · Mumbai, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The mentorship helped me understand analytics deeply and practically. Instead of memorizing concepts, I focused on applying them through hands-on projects. The projects were very practical and useful for interviews. Resume reviews helped me improve my profile. Interview preparation sessions gave me confidence to perform better and communicate my skills clearly during job interviews.</div><div class="testi-author">Saleem Ahmed Syed · Chennai, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>I gained a lot of clarity through this mentorship program. The structured approach helped me improve my skills step by step and stay focused. I worked on projects that strengthened my understanding of analytics. Resume guidance helped me improve my profile significantly. Interview preparation sessions were very helpful in building confidence and preparing me for real job interviews.</div><div class="testi-author">Reena · Delhi, India 🇮🇳</div></div>
+ 
+<div class="testi-card"><div>The mentorship helped me stay consistent and focused throughout my preparation journey. I improved my technical skills through hands-on projects and regular feedback. Resume guidance helped me improve my profile effectively. Interview preparation sessions gave me confidence and clarity. The structured approach kept me accountable and motivated. I now feel more prepared to pursue analytics opportunities.</div><div class="testi-author">Nirosha N · Hyderabad, India 🇮🇳</div>
+
       </div>
       <button class="video-scroll-btn next" onclick="document.getElementById('testiGrid').scrollBy({left:320,behavior:'smooth'})">&#8594;</button>
     </div>
