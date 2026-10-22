@@ -1,14 +1,38 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
- 
- 
-
-
-
-
 <style>
+
+
+.wa-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 2px 14px;
+}
+
+.wa-card {
+  flex: 0 0 260px;
+  align-self: flex-start;
+  scroll-snap-align: start;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.wa-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+
 /* ── TESTIMONIAL SECTION ── */
 
 #text-testimonials {
@@ -110,22 +134,10 @@
 }
 </style>
 
-
-
-
-
-
-
-
-
-
-
-
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Khan Analytics — 1:1 Data Science & Analytics Mentorship</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -778,8 +790,20 @@ h1, h2.display {
   transform: translateY(-3px);
 }
 .why-card-icon { font-size: 20px; margin-bottom: 12px; }
-.why-card-title { font-size: 14.5px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
-.why-card-body { font-size: 13.5px; color: var(--muted); line-height: 1.55; }
+.why-card-title,
+.why-card-body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.why-card-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
 
 /* ── PLANS ── */
 .plans-grid {
@@ -883,6 +907,46 @@ h1, h2.display {
 }
 .company-badge:hover { border-color: rgba(123,110,246,0.4); color: var(--text); background: var(--surface2); }
 
+/* ── WHATSAPP TESTIMONIALS (NEW) ── */
+.wa-scroll-wrap { position: relative; }
+
+.wa-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 2px 14px;
+  scrollbar-width: none;
+}
+.wa-track::-webkit-scrollbar { display: none; }
+
+.wa-card {
+  flex: 0 0 260px;
+  scroll-snap-align: start;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.25s ease;
+}
+.wa-card:hover { transform: translateY(-4px); }
+
+.wa-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.wa-scroll-wrap .video-scroll-btn.prev { left: -12px; }
+.wa-scroll-wrap .video-scroll-btn.next { right: -12px; }
+
+@media (max-width: 768px) {
+  .wa-card { flex-basis: 220px; }
+  .wa-scroll-wrap .video-scroll-btn { display: none; } /* swipe on mobile */
+}
+
 /* ── ANIMATIONS ── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
@@ -954,7 +1018,8 @@ h1, h2.display {
         <div style="
           margin-top:14px;
           font-size:42px;
-          font-weight:800;
+          font-family:var(--font-display);
+          font-weight:400;
           line-height:1.1;
           background:linear-gradient(90deg,#7B6EF6,#3b82f6);
           -webkit-background-clip:text;
@@ -1043,7 +1108,7 @@ h1, h2.display {
 
   <div class="profile-name" style="
     font-size:40px;
-    font-weight:700;
+    font-weight:400;
     margin-top:16px;
   ">
     Mazher Khan
@@ -1091,7 +1156,7 @@ h1, h2.display {
   <div class="container">
 
     <!-- HEADER -->
-    <h2 style="font-size:clamp(32px,5vw,52px);margin-bottom:14px;color:white;">
+    <h2 class="display" style="font-size:clamp(32px,5vw,52px);margin-bottom:14px;color:white;">
       Real results, <span style="color:#3b82f6;">real careers.</span>
     </h2>
  
@@ -1342,12 +1407,27 @@ h1, h2.display {
   </div>
 </section>
 
+<!-- ── WHATSAPP TESTIMONIALS ── -->
+<section id="whatsapp-testimonials" class="section section-pad">
+  <div class="container">
+    <h2 class="display" style="font-size:clamp(28px,4vw,44px);margin-bottom:40px;">
+      Real chats, <em style="font-style:italic;color:var(--accent2);">real feedback</em> — WhatsApp Testimonials
+    </h2>
+
+    <div class="wa-scroll-wrap">
+      <button class="video-scroll-btn prev" onclick="document.getElementById('waTrack').scrollBy({left:-300,behavior:'smooth'})">&#8592;</button>
+      <div class="wa-track" id="waTrack"></div>
+      <button class="video-scroll-btn next" onclick="document.getElementById('waTrack').scrollBy({left:300,behavior:'smooth'})">&#8594;</button>
+    </div>
+  </div>
+</section>
+
 <!-- ── TEXT TESTIMONIALS ── -->
 
 
 <section id="text-testimonials" class="section section-pad">
   <div class="container">
-    <h2 class="display" style="font-size:clamp(28px,4vw,44px);margin-bottom:40px;">Voices from <em style="font-style:italic;color:var(--accent);">10+ countries</em>  -  Written Testimonials </h2>
+    <h2 class="display" style="font-size:clamp(28px,4vw,44px);margin-bottom:40px;">Voices from <em style="font-style:italic;color:var(--accent);">12+ countries</em>  -  Written Testimonials </h2>
     <div class="testi-scroll-wrap">
       <button class="video-scroll-btn prev" onclick="document.getElementById('testiGrid').scrollBy({left:-320,behavior:'smooth'})">&#8592;</button>
       <div class="testi-grid" id="testiGrid">
@@ -1653,7 +1733,7 @@ h1, h2.display {
 <section id="Mentorship_plans" class="section section-pad" style="background:var(--surface);">
   <div class="container">
 
-    <h2 style="font-size:clamp(36px,5vw,58px);margin-bottom:56px;color:#ffffff;font-weight:700;">
+    <h2 class="display" style="font-size:clamp(36px,5vw,58px);margin-bottom:56px;color:#ffffff;">
       Choose your <span style="color:#60a5fa;">mentorship journey</span>
     </h2>
 
@@ -1787,22 +1867,52 @@ h1, h2.display {
   </div>
 </section>
 
-
-<script>
-  document.getElementById("menuToggle").onclick = function () {
-    document.querySelector(".nav-links").classList.toggle("active");
-  };
-</script>
-
-</body>
-</html>
-
-
-
+<!-- ── FOOTER (moved inside body) ── -->
 <footer class="footer-simple">
-  © 2026 Khan Analytics. All Rights Reserved
+  © 2026 Khan Analytics. All rights reserved
 </footer>
 
 
 
- 
+
+
+<script>
+document.getElementById("menuToggle").onclick = function () {
+  document.querySelector(".nav-links").classList.toggle("active");
+};
+
+// WhatsApp Testimonials: T1.png to T29.png
+(function () {
+  var track = document.getElementById("waTrack");
+  if (!track) return;
+
+  var base = "https://raw.githubusercontent.com/khan-theanalyst/Mentorship/main/";
+
+  var fragment = document.createDocumentFragment();
+
+  for (var i = 1; i <= 29; i++) {
+    var card = document.createElement("div");
+    card.className = "wa-card";
+
+    var img = document.createElement("img");
+    img.src = base + "T" + i + ".png";
+    img.alt = "WhatsApp testimonial " + i;
+    img.loading = i <= 3 ? "eager" : "lazy";
+    img.decoding = "async";
+
+    img.onerror = function () {
+      console.error("Image not found:", this.src);
+    };
+
+    card.appendChild(img);
+    fragment.appendChild(card);
+  }
+
+  track.appendChild(fragment);
+})();
+</script>
+
+
+
+</body>
+</html>
