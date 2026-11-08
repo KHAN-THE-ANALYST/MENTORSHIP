@@ -1149,6 +1149,435 @@ h1, h2.display {
 
      <div class="divider"></div>
 
+
+<style>
+/* ===== MY JOURNEY TIMELINE ===== */
+
+.journey-section {
+    background: #09090d;
+    color: #f5f3ff;
+    padding: 90px 24px;
+    font-family: 'Inter', sans-serif;
+}
+
+.journey-container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* ===== HEADING ===== */
+
+.journey-heading {
+    margin-bottom: 55px;
+}
+
+.journey-heading h2 {
+    font-family: Georgia, serif;
+    font-size: 46px;
+    line-height: 1.2;
+    margin: 0 0 18px;
+    color: #f5f3ff;
+}
+
+.journey-heading h2 span {
+    color: #8170ff;
+}
+
+/* Tagline */
+
+.journey-heading p {
+    font-family: Georgia, serif;
+    font-size: 27px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: -0.5px;
+    margin: 0;
+    color: #f5f3ff;
+}
+
+.journey-heading p span {
+    color: #A78BFA;
+    background: none;
+    -webkit-text-fill-color: #A78BFA;
+}
+
+/* ===== TIMELINE LINE ===== */
+
+.journey-timeline {
+    position: relative;
+    padding-left: 34px;
+}
+
+.journey-timeline::before {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 10px;
+    bottom: 10px;
+    width: 2px;
+    background: linear-gradient(
+        to bottom,
+        #8170ff,
+        rgba(129,112,255,0.12)
+    );
+}
+
+/* ===== TIMELINE CARDS ===== */
+
+.journey-item {
+    position: relative;
+    background: #101016;
+    border: 1px solid #262430;
+    border-radius: 13px;
+    padding: 21px 25px;
+    margin-bottom: 17px;
+    transition: all 0.3s ease;
+}
+
+.journey-item:hover {
+    border-color: #8170ff;
+    transform: translateX(4px);
+    background: #13121c;
+}
+
+/* Timeline dots */
+
+.journey-item::before {
+    content: "";
+    position: absolute;
+    left: -34px;
+    top: 27px;
+    width: 12px;
+    height: 12px;
+    background: #8170ff;
+    border: 3px solid #09090d;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(129,112,255,0.4);
+}
+
+/* ===== YEAR COLORS ===== */
+
+.journey-year {
+    display: block;
+    color: #A78BFA !important;
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    margin-bottom: 8px;
+}
+
+/* 2008 and 2013 */
+
+.journey-year.early {
+    color: #FACC15 !important;
+}
+
+/* 2018 */
+
+.journey-year.milestone {
+    color: #FB923C !important;
+}
+
+/* Multi-year achievements */
+
+.journey-year.range {
+    color: #38BDF8 !important;
+}
+
+/* ===== DESCRIPTION ===== */
+
+.journey-description {
+    position: relative;
+    color: #d1cfda;
+    font-size: 15px;
+    line-height: 1.75;
+    margin: 0 0 8px;
+    padding-left: 18px;
+}
+
+/* Bullet points */
+
+.journey-description::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #A78BFA;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Year paragraph - no bullet */
+
+.journey-item > .journey-description:first-child {
+    padding-left: 0;
+}
+
+.journey-item > .journey-description:first-child::before {
+    display: none;
+}
+
+.journey-item > .journey-description:first-child:last-child {
+    margin-bottom: 0;
+}
+
+/* Last achievement */
+
+.journey-description:last-child {
+    margin-bottom: 0;
+}
+
+.journey-description strong:not(.journey-year) {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+
+    .journey-section {
+        padding: 60px 18px;
+    }
+
+    .journey-heading {
+        margin-bottom: 35px;
+    }
+
+    .journey-heading h2 {
+        font-size: 35px;
+    }
+
+    .journey-heading p {
+        font-size: 21px;
+        line-height: 1.5;
+    }
+
+    .journey-timeline {
+        padding-left: 27px;
+    }
+
+    .journey-timeline::before {
+        left: 5px;
+    }
+
+    .journey-item {
+        padding: 17px 16px;
+        margin-bottom: 14px;
+    }
+
+    .journey-item::before {
+        left: -27px;
+        top: 24px;
+        width: 10px;
+        height: 10px;
+    }
+
+    .journey-description {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .journey-year {
+        font-size: 16px;
+    }
+}
+</style>
+
+
+<!-- ===== JOURNEY SECTION ===== -->
+
+<section class="journey-section" id="my-journey">
+
+    <div class="journey-container">
+
+        <div class="journey-heading">
+
+            <h2>My <span>Journey</span> | 2008–2026</h2>
+
+            <p>
+                From <span>Delivery Boy</span> to
+                <span>Global Data Analytics Mentor</span>
+            </p>
+
+        </div>
+
+        <div class="journey-timeline">
+
+
+            <!-- 2008 -->
+
+            <div class="journey-item">
+
+                <p class="journey-description">
+                    <strong class="journey-year early">2008:</strong>
+                </p>
+
+                <p class="journey-description">
+                    Worked as a Delivery Executive at
+                    <strong>DTDC, Kanpur</strong>, for 4 years.
+                </p>
+
+            </div>
+
+
+            <!-- 2013 -->
+
+            <div class="journey-item">
+
+                <p class="journey-description">
+                    <strong class="journey-year early">2013:</strong>
+                </p>
+
+                <p class="journey-description">
+                    Cracked IIT and secured admission to
+                    <strong>IIT (BHU), Varanasi.</strong>
+                </p>
+
+            </div>
+
+
+            <!-- 2018 -->
+
+            <div class="journey-item">
+
+                <p class="journey-description">
+                    <strong class="journey-year milestone">2018:</strong>
+                </p>
+
+                <p class="journey-description">
+                    Graduated from <strong>IIT (BHU)</strong> with a
+                    5-year Dual Degree (B.Tech + M.Tech).
+                </p>
+
+                <p class="journey-description">
+                    Joined <strong>Axtria</strong> as a Data Analyst,
+                    marking the beginning of my corporate career.
+                </p>
+
+            </div>
+
+
+            <!-- 2022 -->
+
+            <div class="journey-item">
+
+                <p class="journey-description">
+                    <strong class="journey-year">2022:</strong>
+                </p>
+
+                <p class="journey-description">
+                    Joined <strong>OLX</strong> as a Senior Product Analyst.
+                </p>
+
+            </div>
+
+
+            <!-- 2023 -->
+
+            <div class="journey-item">
+
+                <p class="journey-description">
+                    <strong class="journey-year">2023:</strong>
+                </p>
+
+                <p class="journey-description">
+                    Faced a layoff at OLX and bounced back by joining
+                    <strong>Target.</strong>
+                </p>
+
+            </div>
+
+
+            <!-- 2024 -->
+
+            <div class="journey-item">
+
+                <p class="journey-description">
+                    <strong class="journey-year">2024:</strong>
+                </p>
+
+                <p class="journey-description">
+                    Started my Data Analytics content creation journey,
+                    building a community of <strong>230K+ followers.</strong>
+                </p>
+
+                <p class="journey-description">
+                    Invited as a <strong>TEDx Speaker</strong> to share
+                    my journey and experiences.
+                </p>
+
+                <p class="journey-description">
+                    Recognised among the
+                    <strong>International 30 Under 30</strong> by GGI.
+                </p>
+
+                <p class="journey-description">
+                    Received the <strong>Topmate Data Creator Award</strong>
+                    among 300K+ creators.
+                </p>
+
+                <p class="journey-description">
+                    Ranked <strong>#2 among the most-booked creators</strong>
+                    in Topmate history and recognised among the
+                    <strong>Top 0.1% Global Mentors.</strong>
+                </p>
+
+            </div>
+
+
+            <!-- 2026 -->
+
+            <div class="journey-item">
+
+                <p class="journey-description">
+                    <strong class="journey-year">2026:</strong>
+                </p>
+
+                <p class="journey-description">
+                    Recognised as a
+                    <strong>Top Global Data Analytics Mentor</strong>
+                    by Feedspot.
+                </p>
+
+                <p class="journey-description">
+                    Invited as a Guest Speaker at
+                    <strong>10+ institutions</strong>, including NIT Rourkela,
+                    GGSIPU and Thapar Institute.
+                </p>
+
+                <p class="journey-description">
+                    Joined as a <strong>Lead Insights Analyst</strong>,
+                    taking the next step in my analytics leadership journey.
+                </p>
+
+            </div>
+
+
+            <!-- 2024–2026 -->
+
+            <div class="journey-item">
+
+                <p class="journey-description">
+                    <strong class="journey-year range">2024–2026:</strong>
+                </p>
+
+                <p class="journey-description">
+                    Conducted <strong>3,000+ one-on-one mentorship sessions</strong>
+                    covering career guidance, resume reviews and interview preparation.
+                </p>
+
+                <p class="journey-description">
+                    Helped <strong>441+ professionals secure jobs</strong>
+                    across 12+ countries through 1:1 mentorship.
+                </p>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</section>
  
 
 <section id="results" class="section section-pad">
